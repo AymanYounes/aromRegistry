@@ -1,0 +1,586 @@
+// Import bootstrap variables and mixins for reference
+@import (reference) "../less-bootstrap/variables.less";
+@import (reference) "../less-bootstrap/mixins.less";
+
+// Initialize Theme Variables
+@import (reference) "../less-medinova/variables.less";
+
+
+
+/* text-theme-color */
+.text-theme-colored {
+  color: @theme-color !important;
+}
+/* text-hover-theme-color */
+.text-hover-theme-colored {
+  &:hover {
+    color: @theme-color !important;
+  }
+}
+/* background-theme-color */
+.bg-theme-colored {
+  background-color: @theme-color !important;
+}
+/* bg-hover-theme-color */
+.bg-hover-theme-colored {
+  &:hover {
+    background: @theme-color !important;
+    border-color: @theme-color !important;
+    color: @white-base !important;
+    
+    h1,h2,h3,h4,h5,h6,p,a,i {
+      color: @white-base !important;
+    }
+  }
+}
+/* border-theme-color */
+.border-theme-colored,
+.causes .progress-item .progress-bar .percent {
+  border-color: @theme-color !important;
+}
+/* background-color-transparent */
+.bg-theme-colored-transparent {
+  background-color: fade(@theme-color, 50%) !important;
+}
+/* Layeroverlay */
+.layer-overlay.overlay-red::before,
+.layer-overlay.overlay-theme-colored-deep::before,
+.post .entry-meta.meta-absolute,
+.volunteer .overlay,
+.bg-theme-colored-transparent-deep {
+  background-color: fade(@theme-color, 90%) !important;
+}
+
+/* Custom overlay */
+.testimonial.style1 .comment {
+  background-color: fade(@theme-color, 60%) !important;
+}
+
+.icon-box.box-style1.practice-style3:hover .icon-wrapper,
+.zeus .tp-bullet::after {
+  background-color: @theme-color;
+}
+
+/*
+ * background: theme-color
+ * -----------------------------------------------
+*/
+.tab-slider .nav.nav-pills a:hover,
+.tab-slider .nav.nav-pills a.active,
+.custom-nav-tabs > li > a:hover,
+.widget .tags a:hover,
+.progress-item .progress-bar,
+.small-title .title::after,
+.testimonial .item::after,
+.drop-caps.colored-square p:first-child:first-letter,
+.drop-caps.colored-rounded p:first-child:first-letter,
+.list-icon.theme-colored.square li i,
+.list-icon.theme-colored.rounded li i,
+.working-process.theme-colored a,
+.widget.dark .tags a:hover,
+.blog-posts .post .entry-content .post-date.right,
+.horizontal-tab-centered .nav-pills > li > a:hover,
+.horizontal-tab-centered .nav-pills > li.active > a,
+.horizontal-tab-centered .nav-pills > li.active  > a:hover,
+.horizontal-tab-centered .nav-pills > li.active > a:focus,
+.owl-theme.dot-theme-colored .owl-controls .owl-dot span,
+.portfolio-filter a.active, .portfolio-filter a:hover,
+.pagination.theme-colored li.active a,
+.section-title .both-side-line::after,
+.section-title .both-side-line::before,
+.section-title .top-side-line::after,
+.section-title .left-side-line::before,
+.section-title .right-side-line::before,
+.product .tag-sale,
+.owl-theme .owl-dots .owl-dot.active span,
+.service-icon-box:hover a,
+.service-icon-box:hover li.active a,
+.pricing-table.style1 .pricing-icon i,
+.blog-posts .post.style1 .entry-header .entry-date.entry-date-absolute,
+.title-dots span {
+  background: @theme-color;
+}
+.cd-timeline-simple .cd-timeline-block .cd-timeline-img {
+    background: @theme-color !important;
+}
+.services-tab .nav-tabs > li.active > a,
+.services-tab .nav-tabs > li.active > a:hover,
+.services-tab .nav-tabs > li.active > a:focus,
+.services-tab .nav-tabs > li a:hover,
+.services-tab .nav-tabs > li a:focus {
+  background-color: @theme-color !important;
+}
+
+.ui-state-highlight {
+  background: @theme-color !important;
+  color: @white-base !important;
+}
+
+/*
+ * text: theme-color
+ * -----------------------------------------------
+*/
+ul.list.theme-colored li:before,
+ul.list.theme-colored.angle-double-right li:before,
+ul.list.theme-colored.angle-right li:before,
+ul.list.theme-colored.check-circle li:before,
+ul.list.theme-colored.check li:before,
+.list-icon.theme-colored li i,
+.menuzord-menu > li > .megamenu .megamenu-row li:hover > a,
+.menuzord-menu > li > .megamenu .megamenu-row .post a:hover,
+.menuzord-menu > li > .megamenu .megamenu-row li:hover > a i,
+.menuzord-menu > li > .megamenu .megamenu-row .post a:hover i,
+.pricing-table .table-list li i,
+.testimonial-carousel.boxed .content::after,
+.blog-posts .post .entry-meta li i,
+.widget .twitter-feed li::after,
+.widget .address li i,
+.icon-box.box-style1.practice-style3 i,
+.attorney-carousel .content .contact-area i,
+.attorney-address li i,
+.icon-box.services-style1:hover .heading,
+.horizontal-contact-widget .widget::before,
+.horizontal-contact-widget .each-widget::before,
+.small-title i,
+.drop-caps.text-colored p:first-child:first-letter,
+.schedule-box:hover .schedule-details .title a,
+.widget.dark .nav-tabs li.active a,
+.pagination.theme-colored li a,
+.pager.theme-colored a,
+.widget .post-title a:hover,
+.volunteer .info .name a,
+.donation-form .form-group label,
+.service-icon-box a i,
+.owl-carousel.owl-nav-top .owl-controls .owl-nav .owl-prev i, 
+.owl-carousel.owl-nav-top .owl-controls .owl-nav .owl-next i,
+.owl-carousel.owl-nav-top .owl-controls .owl-nav > div:hover i,
+.services-tab .nav-tabs > li > a i {
+  color: @theme-color;
+}
+
+.star-rating span::before {
+  color: @theme-color !important;
+}
+.menuzord.blue .menuzord-menu > li.active > a, .menuzord.blue .menuzord-menu > li:hover > a, .menuzord.blue .menuzord-menu ul.dropdown li:hover > a {
+    background-color: darken(@theme-color, 10%);
+  }
+/*
+ * border: theme-color
+ * -----------------------------------------------
+*/
+.line-bottom:after,
+.icon-box.icon-rounded-bordered i,
+.widget .line-bottom:after,
+.widget .line-bottom:after,
+.pager.theme-colored a,
+.owl-carousel.owl-nav-top .owl-controls .owl-nav .owl-prev, 
+.owl-carousel.owl-nav-top .owl-controls .owl-nav .owl-next {
+  border: 1px solid @theme-color;
+}
+.border-theme-colored,
+.owl-theme .owl-dots .owl-dot span {
+  border-color: @theme-color;
+}
+.icon-box.box-style1.practice-style3:hover .icon-wrapper::after {
+  border-color: @theme-color transparent transparent;
+}
+
+/* border-left-color */
+blockquote.theme-colored {
+    border-left: 3px solid @theme-color;
+}
+blockquote.bg-theme-colored {
+    border-left: 3px solid darken(@theme-color, 10%);
+    color: @white-base;
+
+    footer {
+      color: @gray-lighter;
+    }
+}
+blockquote.gray.bg-theme-colored {
+    background-color: @gray-lighter !important;
+    border-left: 3px solid @theme-color;
+    color: @theme-color;
+    
+    footer {
+      color: @gray-light;
+    }
+}
+.attorney-address li {
+    border-left: 1px solid @theme-color;
+}
+.section-title.title-border {
+    border-left: 4px solid @theme-color;
+}
+
+/* border-top-color */
+.member-info {
+  border-top: 3px outset @theme-color;
+}
+.cssload-tri {
+  border-top: 27px solid @theme-color;
+}
+
+/* border-right-color */
+.border-right-red {
+  border-right: 1px solid @theme-color;
+}
+.section-title.title-border.title-right {
+    border-right: 4px solid @theme-color;
+}
+
+/* border-bottom-color */
+.border-bottom {
+  border-bottom: 1px solid @theme-color;
+}
+.event {
+  border-bottom-color: @theme-color;
+}
+
+
+.cssload-tri.cssload-invert {
+  border-bottom: 27px solid @theme-color;
+}
+/* box-shadow */
+
+
+
+
+
+/*
+ * btn-default: theme-color
+ * -----------------------------------------------
+*/
+.btn-default.btn-theme-colored {
+  .button-variant(@theme-color; @btn-default-bg; @theme-color);
+}
+.btn-default.btn-theme-colored:hover,
+.btn-default.btn-theme-colored:active,
+.btn-default.btn-theme-colored:focus {
+  background-color: @theme-color;
+  border-color: @theme-color;
+  color: @white-base;
+}
+
+
+/*
+ * btn-border
+ * -----------------------------------------------
+*/
+.btn-border.btn-theme-colored {
+  .button-variant(@theme-color; @btn-border-bg; @theme-color);
+}
+.btn-border.btn-theme-colored:hover,
+.btn-border.btn-theme-colored:active,
+.btn-border.btn-theme-colored:focus {
+  background-color: darken(@theme-color, 10%);
+  border-color: darken(@theme-color, 10%);
+  color: @white-base;
+}
+
+
+/*
+ * btn-dark
+ * -----------------------------------------------
+*/
+.btn-dark.btn-theme-colored {
+  .button-variant(@btn-dark-color; @theme-color; @theme-color);
+}
+
+
+/*
+ * btn-gray
+ * -----------------------------------------------
+*/
+.btn-gray.btn-theme-colored {
+  .button-variant(@white-base; lighten(@theme-color, 10%); lighten(@theme-color, 10%));
+}
+
+/*
+ * btn-primary: theme-color
+ * -----------------------------------------------
+*/
+.btn-theme-colored {
+  .button-variant(@btn-primary-color; @theme-color; @theme-color)
+}
+
+/*
+ * btn-transparent
+ * -----------------------------------------------
+*/
+.btn-transparent {
+  background-color: transparent;
+  color: @white-base;
+}
+.btn-transparent.btn-theme-colored {
+  background-color: transparent;
+}
+.btn-transparent.btn-dark {
+  background-color: @black-111;
+  border-color: @black-111;
+
+  &:hover {
+    background-color: darken(@black-111, 10%);
+    border-color: darken(@black-111, 10%);
+  }
+}
+.btn-transparent.btn-dark.btn-theme-colored {
+  background-color: @theme-color;
+  border-color: @theme-color;
+
+  &:hover {
+    background-color: darken(@theme-color, 10%);
+    border-color: darken(@theme-color, 10%);
+  }
+}
+.btn-transparent.btn-border {
+  background-color: transparent;
+  border-color: @gray-lighter;
+
+  &:hover {
+    background-color: @gray-lighter;
+    color: @black;
+  }
+}
+.btn-transparent.btn-border.btn-theme-colored {
+  background-color: transparent;
+  border-color: @theme-color;
+
+  &:hover {
+    background-color: @theme-color;
+    color: @white-base;
+  }
+}
+
+.btn-gray.btn-transparent {
+  background-color: @gray-lightgray;
+  color: @black-333;
+
+  &:hover {
+    background-color: lighten(@gray-lightgray, 10%);
+    color: darken(@black-333, 10%);
+  }
+}
+
+.btn-gray.btn-transparent.btn-theme-colored {
+  background-color: lighten(@theme-color, 10%);
+  color: @white-base;
+
+  &:hover {
+    background-color: darken(@theme-color, 10%);
+    color: darken(@white-base, 10%);
+  }
+}
+
+.btn-hover-theme-colored {
+  &:hover {
+    background-color: @theme-color;
+    border-color: @theme-color;
+    color: @white-base;
+  }
+}
+
+/*
+ * Shortcode: social-icons Theme Colored
+ * -----------------------------------------------
+*/
+.icon-theme-colored {
+  a {
+    color: @theme-color;
+  }
+
+  &.icon-bordered {
+    a {
+      border-color: @theme-color;
+
+      &:hover {
+        background-color: @theme-color;
+        color: @white-base;
+      }
+    }
+  }
+
+  &.icon-dark {
+    a {
+      background-color: @theme-color;
+      color: @white-base;
+
+      &:hover {
+        background-color: darken(@theme-color, 10%);
+        color: darken(@white-base, 10%);
+      }
+    }
+
+    &.icon-bordered {
+      a {
+        border-color: @theme-color;
+        color: @theme-color;
+
+        &:hover {
+          background-color: @theme-color;
+          border-color: @theme-color;
+          color: @white-base;
+        }
+      }
+    }
+  }
+
+  &.icon-gray {
+    a {
+      color: @theme-color;
+
+      &:hover {
+        color: darken(@theme-color, 10%);
+      }
+    }
+
+    &.icon-bordered {
+      a {
+        color: @theme-color;
+
+        &:hover {
+          background-color: @gray-lighter;
+          border-color: @gray-lighter;
+          color: @theme-color;
+        }
+      }
+    }
+  }
+}
+
+.icon-theme-colored {
+  a {
+    &:hover {
+      color: darken(@theme-color, 10%);
+    }
+  }  
+}
+
+.icon-hover-theme-colored {
+  a {
+    &:hover {
+      background-color: @theme-color;
+      border-color: @theme-color;
+      color: @white-base;
+    }
+  }  
+}
+
+.styled-icons.icon-hover-theme-colored {
+  a {
+    &:hover {
+      background-color: @theme-color;
+      border-color: @theme-color;
+      color: @white-base;
+    }
+  }  
+}
+
+/*
+ * Shortcode: Icon Boxes Theme Colored
+ * -----------------------------------------------
+*/
+.icon-box{
+  &.iconbox-theme-colored {
+    .icon {
+      color: @theme-color;
+
+      &.icon-border-effect {
+        &::after {
+          box-shadow: 0 0 0 3px @theme-color;
+        }
+      }
+
+      &.icon-bordered {
+        border-color: @theme-color;
+
+        &:hover {
+          background-color: @theme-color;
+          color: @white-base;
+        }
+      }
+
+      &.icon-gray {
+        &:hover {
+          background-color: @theme-color;
+          color: @white-base;
+        }
+
+        &.icon-bordered {
+          border-color: @gray-lighter;
+
+          &:hover {
+            background-color: @theme-color;
+            border-color: @theme-color;
+            color: @white-base;
+          }
+        }
+      }
+
+      &.icon-dark {
+        background-color: @theme-color;
+        color: @white-base;
+
+        &:hover {
+          color: @white-base;
+        }
+
+        &.icon-bordered {
+          background-color: transparent;
+          border-color: @theme-color;
+          color: @theme-color;
+
+          &:hover {
+            background-color: @theme-color;
+            border-color: @theme-color;
+            color: @white-base;
+          }
+        }
+      }
+
+
+
+      &.icon-white {
+        background-color: @white-base;
+        color: @theme-color;
+
+        &:hover {
+          background-color: @theme-color;
+          color: @white-base;
+        }
+
+        &.icon-bordered {
+          background-color: transparent;
+          border-color: @theme-color;
+          color: @white-base;
+
+          &:hover {
+            background-color: @theme-color;
+            border-color: @theme-color;
+            color: @white-base;
+          }
+        }
+      }
+    }
+
+    &.iconbox-border {
+      border-color: @theme-color;
+    }
+  }
+}
+
+/*Footer Styles*/
+.footer-box-one > div {
+  background: @theme-color;
+}
+.footer-box-two > div {
+  background: darken(@theme-color,5%) !important;
+}
+.footer-box-three > div {
+  background: darken(@theme-color,10%) !important;
+}
+
+/* Theme-color for dark */
+.dark .service-icon-box:hover li.active a {
+  background: @theme-color !important;    
+}
