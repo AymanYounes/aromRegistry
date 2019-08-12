@@ -152,10 +152,12 @@
     && Request::route()->getName() != 'profileIndex'
     && Request::route()->getName() != 'casesIndex'
     && Request::route()->getName() != 'casesAddCase'
+    && Request::route()->getName() != 'password.request'
     && !isset($exception))
         @include('templates.main_header')
     @elseif(Request::route()
     && ( Request::route()->getName() == 'login'
+    || Request::route()->getName() == 'password.request'
     || Request::route()->getName() == 'register')
     && !isset($exception))
     @else
@@ -172,12 +174,14 @@
     && Request::route()->getName() != 'projectsIndex'
     && Request::route()->getName() != 'profileIndex'
     && Request::route()->getName() != 'casesIndex'
+    && Request::route()->getName() != 'password.request'
     && !isset($exception))
         @include('templates.main_footer')
     @elseif(Request::route()
     && ( Request::route()->getName() == 'login'
     || Request::route()->getName() == 'register'
     || Request::route()->getName() == 'casesAddCase'
+    || Request::route()->getName() == 'password.request'
     )
     && !isset($exception))
     @else

@@ -29,7 +29,8 @@
         <div class="container-login100">
             <div class="wrap-login100">
 
-                <form class="login100-form signup-form validate-form" method="post" action="{{url('/signup')}}">
+
+                <form id="signup_form" class="login100-form signup-form validate-form" method="post" action="{{url('/signup')}}">
 
                     {{ csrf_field() }}
                     <div class="login-logo-wrapper p-b-20">
@@ -42,44 +43,36 @@
 						Join us
 					</span>
 
-
+                    @include('templates.error')
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email">
+                        <input value="{{old('email')?old('email'):(request('email')!=null?request('email'):'')}}" class="input100" type="text" id="signup_email" name="email">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
                     </div>
 
 
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password">
+                    <div class="wrap-input100 validate-input" data-validate="Password is required" >
+                        <input class="input100" type="password" id="signup_password" name="password">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                     </div>
 
 
-                    <div class="wrap-input100 validate-input" data-validate="Password verify is required">
-                        <input class="input100" type="password" name="repassword">
+                    <div class="wrap-input100 validate-input" data-validate="Password verify is required" data-validation="length alphanumeric" data-validation-length="min8">
+                        <input class="input100" type="password" id="signup_repassword" name="repassword">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password verify</span>
                     </div>
 
-
-                    {{--<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">--}}
-                        {{--<input class="input100" type="email" name="email">--}}
-                        {{--<span class="focus-input100"></span>--}}
-                        {{--<span class="label-input100">Email</span>--}}
-                    {{--</div>--}}
-
-
                     <div class="wrap-input100 validate-input" data-validate = "Doctor name is required">
-                        <input class="input100" type="text" name="name">
+                        <input class="input100" type="text" id="signup_name" name="name">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Doctor Name</span>
                     </div>
 
 
-                    <div class="wrap-input100 validate-input select-input-wrapper" data-validate = "Doctor name is required">
-                        <select class="input100 select-input" name="site">
+                    <div class="wrap-input100 validate-input select-input-wrapper" data-validate = "Site is required">
+                        <select class="input100 select-input" id="signup_site" name="site">
                             <option value=""> Site </option>
                             <option value="5">
                                 Ain Shams University Hospital
@@ -182,7 +175,7 @@
                     </p>
                 </form>
 
-                <div class="login-fixed-logo-wrapper" style="z-index: 10000">
+                <div class="login-fixed-logo-wrapper" style="z-index: 9998">
                     <a href="{{url('/')}}"><img class="login-fixed-logo" src="images/logo-0-wide-large.png"></a>
                 </div>
                 <div class="login100-more" style="background-image: url('images/bg-13.jpg');">
@@ -194,6 +187,10 @@
 
 
     </div>
+
+
+
+    @include('hiddens.auth.signup')
 
 @endsection
 
@@ -218,6 +215,6 @@
     <!--===============================================================================================-->
     <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/auth/signup.js')}}"></script>
 
 @endsection

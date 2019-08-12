@@ -30,11 +30,11 @@
             <div class="wrap-login100">
 
 
-                <form class="login100-form validate-form" method="post" action="{{url('/post-login')}}">
+                <form id="login_form" class="login100-form validate-form" method="post" action="{{url('/post-login')}}">
 
                     {{ csrf_field() }}
                     <div class="login-logo-wrapper p-b-20">
-                        <a href="index.html"> <img class="login-logo" src="images/logo-0-wide-large.png"></a>
+                        <a href="{{url('/')}}"> <img class="login-logo" src="images/logo-0-wide-large.png"></a>
                     </div>
 
                     <span class="login100-form-title p-b-43">
@@ -42,6 +42,7 @@
 					</span>
 
 
+                    @include('templates.error')
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text" name="email">
                         <span class="focus-input100"></span>
@@ -64,7 +65,7 @@
                         </div>
 
                         <div>
-                            <a href="#" class="txt1">
+                            <a href="{{url('password/reset')}}" class="txt1">
                                 Forgot Password?
                             </a>
                         </div>
@@ -83,21 +84,21 @@
                         </button>
                     </div> -->
 
-                    <div class="text-center p-t-46 p-b-20">
-						<span class="txt2">
-							or sign in using
-						</span>
-                    </div>
+                    {{--<div class="text-center p-t-46 p-b-20">--}}
+						{{--<span class="txt2">--}}
+							{{--or sign in using--}}
+						{{--</span>--}}
+                    {{--</div>--}}
 
-                    <div class="login100-form-social flex-c-m">
-                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
-                        </a>
+                    {{--<div class="login100-form-social flex-c-m">--}}
+                        {{--<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">--}}
+                            {{--<i class="fa fa-facebook-f" aria-hidden="true"></i>--}}
+                        {{--</a>--}}
 
-                        <a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">
-                            <i class="fa fa-google" aria-hidden="true"></i>
-                        </a>
-                    </div>
+                        {{--<a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">--}}
+                            {{--<i class="fa fa-google" aria-hidden="true"></i>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
                     <p class="signup-p m-t-20">
                         Not a member yet?
                         <a href="{{url('register')}}" class="signup-link">
@@ -105,8 +106,8 @@
                         </a>
                     </p>
                 </form>
-                <div class="login-fixed-logo-wrapper" style="z-index: 10000">
-                    <a href="index.html"><img class="login-fixed-logo" src="images/logo-0-wide-large.png"></a>
+                <div class="login-fixed-logo-wrapper" style="z-index: 9998">
+                    <a href="{{url('/')}}"><img class="login-fixed-logo" src="images/logo-0-wide-large.png"></a>
                 </div>
                 <div class="login100-more" style="background-image: url('images/bg-12.jpg');">
                 </div>
@@ -140,6 +141,6 @@
     <!--===============================================================================================-->
     <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/auth/signup.js')}}"></script>
 
 @endsection

@@ -30,22 +30,32 @@
             <div class="wrap-login100">
 
 
+                <form class="login100-form validate-form" method="POST" action="{{ route('password.update') }}">
+                    @csrf
 
-                <form class="login100-form validate-form" method="post" action="{{url('/post-login')}}">
                     <div class="login-logo-wrapper p-b-20">
                         <a href="{{url('/')}}"> <img class="login-logo" src="images/logo-0-wide-large.png"></a>
                     </div>
 
                     <span class="login100-form-title p-b-43">
-						Login
+						Reset Password
 					</span>
 
 
+                    <input type="hidden" name="token" value="{{ $token }}">
+
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email">
+
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                        {{--<input class="input100" type="text" name="email">--}}
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
                     </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
 
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">

@@ -60,23 +60,15 @@ class LoginController extends Controller
 
 
     public function postLogin(Request $request) {
-//dd($request);
 
-
-
+        $errors = [$request->email => "Username or password is not correct"];
 
         $auth = (Auth::attempt(['email' => $request->email, 'password' => $request->password], true));
-//        dd($auth);
+
         if(!$auth){
-            return redirect('/login');
+            return redirect('/login')->withErrors($errors);
         }
-//        $user = User::where('email', $request->email)->where('password', Hash::make($request->password));
-//
-//
-//        if (Auth::loginUsingId($user->id)) {
-//
-//            return redirect('/projects');
-//        }
+
         return redirect('/projects');
     }
 

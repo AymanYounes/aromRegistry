@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\AromLibrary\AbstractClasses\Authentication;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,11 +65,8 @@ class RegisterController extends Authentication
 //        dd($return['error']);
         if ($return['error'] == 0) {
             if (Auth::loginUsingId($return['data']->id)) {
-
-
                 return redirect('/projects');
             }
-
 
         } else {
             return redirect('/signup');
@@ -102,7 +99,7 @@ class RegisterController extends Authentication
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {

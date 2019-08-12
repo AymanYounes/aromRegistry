@@ -397,6 +397,19 @@ input.input100 {
   transform: scaleX(1.1) scaleY(1.3);
 }
 
+.select-input-wrapper{
+  border: none;
+
+}
+
+.select-input-wrapper .has-val, .select-input{
+  height: 80px !important;
+}
+
+.error-input100{
+  border: 1px solid #FF2434;
+}
+
 .input100:focus + .focus-input100 {
   visibility: visible;
   opacity: 1;
@@ -571,14 +584,6 @@ input.input100 {
   background: #333333;
 }
 
-.select-input-wrapper{
-  border: none;
-
-}
-
-.select-input-wrapper .has-val, .select-input{
-  height: 80px !important;
-}
 
 
 
