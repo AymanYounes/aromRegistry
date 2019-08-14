@@ -1,11 +1,11 @@
 
 <!-- Header -->
-<header id="header" class="projects_header header layer-overlay overlay-white-1" data-bg-img="images/side-bg.jpg">
+<header id="header" class="projects_header header layer-overlay overlay-white-1" data-bg-img="{{asset('images/side-bg.jpg')}}">
     <div class="header-nav">
         <div class="header-nav-wrapper">
             <div class="container-fluid p-0">
                 <div id="menuzord-verticalnav" class="menuzord blue">
-                    <a class="menuzord-brand p-30" href="javascript:void(0)"><img width="200" alt="logo" src="images/logo-0-wide-white.png"></a>
+                    <a class="menuzord-brand p-30" href="javascript:void(0)"><img width="200" alt="logo" src="{{asset('images/logo-0-wide-white.png')}}"></a>
                     <ul class="menuzord-menu">
                         <li><a class="text-white" href="{{url('/')}}">Home</a> </li>
                         <li class="{{(Request::route()&& Request::route()->getName() == 'projectsIndex')?'active':''}}"><a class="text-white" href="{{url('/projects')}}">projects</a> </li>
@@ -42,7 +42,7 @@
     <div class="top">
         <div class="navbar">
             <div class="navbar__menu">
-                <a href="" class="mb-40"><img src="images/logo-0-wide-white.png" width="100px;" ></a>
+                <a href="" class="mb-40"><img src="{{asset('images/logo-0-wide-white.png')}}" width="100px;" ></a>
 
                 <a class="navbar__item navbar__link" href="{{url('/')}}">Home</a>
                 <a class="navbar__item navbar__link" href="{{url('/projects')}}">Projects</a>

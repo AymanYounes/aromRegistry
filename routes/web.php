@@ -36,3 +36,4 @@ Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'homeIndex']);
     Route::get('/profile', ['uses' => 'ProfileController@index', 'as' => 'profileIndex']);
     Route::get('/cases', ['uses' => 'CasesController@index', 'as' => 'casesIndex']);
     Route::get('/add-case', ['uses' => 'CasesController@getAddCase', 'as' => 'casesAddCase']);
+    Route::get('/add-case/{project_id}', ['uses' => 'CasesController@getAddProjectCase', 'as' => 'casesAddProjectCase']);

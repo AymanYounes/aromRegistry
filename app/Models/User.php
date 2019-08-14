@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','email_code','site_id','image','title',
+        'address', 'phone', 'permission'
     ];
 
     /**
@@ -38,4 +39,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function site()
+    {
+        return $this->belongsTo('App\Models\User_site', 'site_id');
+    }
+
+
 }

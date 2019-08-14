@@ -109,6 +109,7 @@
                 && (Request::route()->getName() == 'projectsIndex'
                 || Request::route()->getName() == 'profileIndex'
                 || Request::route()->getName() == 'casesAddCase'
+                || Request::route()->getName() == 'casesAddProjectCase'
                 || Request::route()->getName() == 'casesIndex'))?
                 'vertical-nav':''
             }}">
@@ -152,6 +153,7 @@
     && Request::route()->getName() != 'profileIndex'
     && Request::route()->getName() != 'casesIndex'
     && Request::route()->getName() != 'casesAddCase'
+    && Request::route()->getName() != 'casesAddProjectCase'
     && Request::route()->getName() != 'password.request'
     && !isset($exception))
         @include('templates.main_header')
@@ -171,6 +173,7 @@
     && Request::route()->getName() != 'login'
     && Request::route()->getName() != 'register'
     && Request::route()->getName() != 'casesAddCase'
+    && Request::route()->getName() != 'casesAddProjectCase'
     && Request::route()->getName() != 'projectsIndex'
     && Request::route()->getName() != 'profileIndex'
     && Request::route()->getName() != 'casesIndex'
@@ -181,6 +184,7 @@
     && ( Request::route()->getName() == 'login'
     || Request::route()->getName() == 'register'
     || Request::route()->getName() == 'casesAddCase'
+    || Request::route()->getName() == 'casesAddProjectCase'
     || Request::route()->getName() == 'password.request'
     )
     && !isset($exception))

@@ -1,177 +1,97 @@
-<div id="project_1" class="project_modal">
-    <div class="close_modal"><i class="pe-7s-close"></i></div>
-    <div class="modal-background">
-        <div class="modal">
 
+@if(isset($projects))
 
+    @foreach($projects as $project)
+        <div id="project_{{$project->id}}" class="project_modal">
+            <div class="close_modal"><i class="pe-7s-close"></i></div>
+            <div class="modal-background">
+                <div class="modal">
 
-
-            <!-- <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-              <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-            </svg> -->
-
-
-
-            <div class="modal-content pt-20 pb-20">
-                <div class="esc-heading lr-line left-heading">
-                    <h4>SpAERe - AS</h4>
-                    <h4>SpondyloArthritis Egyptian Registry</h4>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="vertical-tab">
-                            <ul class="nav nav-tabs">
-                                <li class=""><a href="#managers" data-toggle="tab" aria-expanded="false">Project Managers</a></li>
-                                <li class="active"><a href="#objectives" data-toggle="tab" aria-expanded="true">Objectives</a></li>
-                                <li class=""><a href="#study" data-toggle="tab" aria-expanded="false">Study design</a></li>
-                                <li class=""><a href="#variables" data-toggle="tab" aria-expanded="false">Outcome variables</a></li>
-                                <li class=""><a href="#analysis" data-toggle="tab" aria-expanded="false">Analysis plan</a></li>
-
-                            </ul>
+                    <div class="modal-content pt-20 pb-20">
+                        <div class="esc-heading lr-line left-heading">
+                            <h4>{{$project->name}}</h4>
+                            <h4>{{$project->name_full}}</h4>
                         </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="tab-content">
-                            <div class="tab-pane fade" id="managers">
-                                <div class="row">
-                                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="vertical-tab">
+                                    <ul class="nav nav-tabs">
+                                        <li class=""><a href="#managers{{$project->id}}" data-toggle="tab" aria-expanded="false">Project Managers</a></li>
+                                        <li class="active"><a href="#objectives{{$project->id}}" data-toggle="tab" aria-expanded="true">Objectives</a></li>
+                                        <li class=""><a href="#study{{$project->id}}" data-toggle="tab" aria-expanded="false">Study design</a></li>
+                                        <li class=""><a href="#variables{{$project->id}}" data-toggle="tab" aria-expanded="false">Outcome variables</a></li>
+                                        <li class=""><a href="#analysis{{$project->id}}" data-toggle="tab" aria-expanded="false">Analysis plan</a></li>
 
-                                        <!-- Section: Managers box -->
-                                        <div class="section-content">
-                                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                                <div class="image-box-thum">
-                                                    <img src="images/dr-hesham.jpg" alt="Prof. Hesham Hamoud">
-                                                </div>
-                                                <div class="image-box-details text-center p-10 mt-10 bg-lighter ">
-                                                    <h5 class="title mt-0">Prof. Hesham Hamoud</h5>
-                                                    <p class="desc mb-20">Al Azhar University</p>
-                                                    <a href="doctor-details.html" class="btn btn-colored btn-theme-colored">View profile</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                                <div class="image-box-thum">
-                                                    <img src="images/dr-ahmed.jpg" alt="Prof. Khalid Zaky">
-                                                </div>
-                                                <div class="image-box-details text-center p-10 mt-10 bg-lighter ">
-                                                    <h5 class="title mt-0">Prof. Khalid Zaky</h5>
-                                                    <p class="desc mb-20">Al Azhar University</p>
-                                                    <a href="doctor-details.html" class="btn btn-colored btn-theme-colored">View profile</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                                <div class="image-box-thum">
-                                                    <img src="images/dr-bahaa.jpg" alt="Prof. Khalid Zaky">
-                                                </div>
-                                                <div class="image-box-details text-center p-10 mt-10 bg-lighter ">
-                                                    <h5 class="title mt-0">Prof. Sherif Refaat</h5>
-                                                    <p class="desc mb-20">Mansoura University</p>
-                                                    <a href="doctor-details.html" class="btn btn-colored btn-theme-colored">View profile</a>
-                                                </div>
-                                            </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="managers{{$project->id}}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- Section: Managers box -->
+                                                <div class="section-content">
 
-                                        </div>
+                                                    @foreach($project->managers as $manager)
+                                                        <div class="col-xs-12 col-sm-4 col-md-4">
+                                                            <div class="image-box-thum">
+                                                                <img src="{{$manager->image}}" alt="{{$manager->name}}">
+                                                            </div>
+                                                            <div class="image-box-details text-center p-10 mt-10 bg-lighter ">
+                                                                <h5 class="title mt-0">{{$manager->name}}</h5>
+                                                                <p class="desc mb-20">{{$manager->work_place}}</p>
+                                                                <a href="{{url('doctor-details/'.$manager->id)}}" class="btn btn-colored btn-theme-colored">View profile</a>
+                                                            </div>
+                                                        </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade active in text-left" id="objectives">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="sub-section">
-                                            <h5 class="widget-title line-bottom text-left">General Objective</h5>
-                                            <p class="pt-font">Concerning the initial treatment of SpAs in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of ACR/EULAR management recommendations, the unmet needs with Cs DMARDs and the constraints of biological usage.</p>
-                                        </div>
-                                        <div class="sub-section">
-                                            <h5 class="widget-title line-bottom text-left">Specific Objective</h5>
-                                            <p class="varela-font">Primary objectives in patients diagnosed with SpAs , the time between the diagnosis and the initiation of therapy with Cs DMARDs, to assess the compliance with the EULAR /ACR and T2T recommendations of the initial phase of clinical management to assess the frequency of achievement of the 12 month target.</p>
-                                        </div>
-                                        <div class="sub-section">
-                                            <h5 class="widget-title line-bottom text-left">Secondary Objective</h5>
-                                            <ul class="abel-font">
-                                                <li>
-                                                    Early diagnosis and start of any Cs or biologic DMARDs.
-                                                </li>
-                                                <li>
-                                                    To estimate the incidence and prevalence of nr-axSpA among Egyptian populations.
-                                                </li>
-                                                <li>
-                                                    To estimate the incidence and prevalence of AS among Egyptian populations.
-                                                </li>
-                                                <li>
-                                                    To estimate the incidence and prevalence of psoriatic arthritis among Egyptians.
-                                                </li>
-                                                <li>
-                                                    To estimate the average time between the onset of symptoms and the first diagnosis.
-                                                </li>
-                                                <li>
-                                                    To estimate the average time between diagnosis and the first dosage of treatment.
-                                                </li>
-                                                <li>
-                                                    To estimate the average time between visits.
-                                                </li>
-                                                <li>
-                                                    To estimate the frequency of prescription of Cs DMARDs and the different/preferred routes of administration.
-                                                </li>
-                                                <li>
-                                                    To estimate the frequency of therapies with combination Cs & biologic DMARDs.
-                                                </li>
-                                                <li>
-                                                    To estimate the frequency of patients who start the drug and failed to achieve remission.
-                                                </li>
-                                                <li>
-                                                    To estimate the frequency of prescription of different biological drugs after the failure of Cs DMARDs
-                                                </li>
-                                                <li>
-                                                    To estimate the frequency of patients who do not start the biological drug despite the clinical, laboratory indications.
-                                                </li>
-                                                <li>
-                                                    To identify the limitations to use biological therapy despite the physician/patient consensus.
-                                                </li>
-                                                <li>
-                                                    To evaluate the frequency of adverse events to Cs DMARDs.
-                                                </li>
-                                                <li>
-                                                    To evaluate the frequency of adverse events to biological DMARDs.
-                                                </li>
-                                            </ul>
+                                                    @endforeach
+
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="study">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <img class="pull-left flip pr-20" width="300" src="http://placehold.it/155x90" alt="">
-                                        <p>One Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iste, architecto ullam tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.consectetur adipisicing elit. Quaerat, iste, architecto ullam tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae. molestiae.consectetur adipisicing elit. Quaerat, iste, architecto ullam tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.</p>
+                                    <div class="tab-pane fade active in text-left" id="objectives{{$project->id}}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {!! $project->objectives !!}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="variables">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <img class="pull-left flip pr-20" width="300" src="http://placehold.it/155x90" alt="">
-                                        <p>One Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iste, architecto ullam tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.consectetur adipisicing elit. Quaerat, iste, architecto ullam tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae. molestiae.consectetur adipisicing elit. Quaerat, iste, architecto ullam tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.tenetur quia nemo ratione tempora consectetur quos minus ut quo nulla ipsa aliquid neque molestias et qui sunt. Odit, molestiae.</p>
+                                    <div class="tab-pane fade" id="study{{$project->id}}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {!! $project->study_design !!}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="analysis">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5 class="widget-title line-bottom text-left">Specific Objective</h5>
-                                        <p class="varela-font">Primary objectives in patients diagnosed with SpAs , the time between the diagnosis and the initiation of therapy with Cs DMARDs, to assess the compliance with the EULAR /ACR and T2T recommendations of the initial phase of clinical management to assess the frequency of achievement of the 12 month target.</p>
+                                    <div class="tab-pane fade" id="variables{{$project->id}}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {!! $project->outcome_variables !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="analysis{{$project->id}}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {!! $project->analysis_plan !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
-
-
         </div>
-    </div>
-</div>
+    @endforeach
 
+@endif
 
 
 

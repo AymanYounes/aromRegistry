@@ -130,6 +130,7 @@ class Authentication extends Controller
         $user = new User();
         $user->name = strtolower($registerData->name);
         $user->email = $registerData->email;
+        $user->site_id = $registerData->site;
         $user->password = Hash::make($registerData->password);
         $user->email_code = $registerData->email_code;
 //        $user->email_code;

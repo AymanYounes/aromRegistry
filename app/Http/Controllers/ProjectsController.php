@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use App\Models\Project_manager;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -23,6 +25,12 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('projects');
+
+        $projects = Project::whereNull('deleted_at')->with('managers')->get();
+
+        return view('projects')->with('projects',$projects);
     }
+
+
+
 }
