@@ -4,6 +4,7 @@
 /public/vendor
 /storage/*.key
 /vendor
+/node_modules
 /.idea
 /.vagrant
 /node_modules
