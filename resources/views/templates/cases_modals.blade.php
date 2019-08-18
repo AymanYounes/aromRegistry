@@ -24,26 +24,36 @@
                                     Doctor:
                                     <span class="text-theme-colored">{{$view_case->user->name}}</span>
                                 </li>
-                                <li>
-                                    Site:
-                                    <span class="text-theme-colored">{{$view_case->user->site->name}}</span>
-                                </li>
+                                @if($view_case->user->site->name)
+                                    <li>
+                                        Site:
+                                        <span class="text-theme-colored">{{$view_case->user->site->name}}</span>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                         <div class="col-sm-6">
                             <ul>
+                                @if($view_case->visit)
                                 <li>
                                     Date:
                                     <span class="text-theme-colored">{{$view_case->visit}}</span>
                                 </li>
+                                @endif
+
+                                @if($view_case->project->name)
                                 <li>
                                     Project:
                                     <span class="text-theme-colored">{{$view_case->project->name}}</span>
                                 </li>
+                                @endif
+
+                                @if($view_case->patient->name)
                                 <li>
                                     Patient:
                                     <span class="text-theme-colored">{{$view_case->patient->name}}</span>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -57,24 +67,40 @@
                     <div class="row">
                         <div class="bottom-border pb-10 mb-10">
 
+                            @if($view_case->patient->name)
                             <div class="col-sm-12">
                                 <strong> Name:</strong> {{$view_case->patient->name}}
                             </div>
+                            @endif
+
+                            @if($view_case->patient->birthday)
                             <div class="col-sm-6">
                                 <strong> Birthdate:</strong> {{$view_case->patient->birthday}}
                             </div>
+
                             <div class="col-sm-6">
                                 <strong> Age:</strong> {{getAge($view_case->patient->birthday)}}
                             </div>
+                            @endif
+
+                            @if($view_case->patient->gender)
                             <div class="col-sm-12">
                                 <strong> Gender:</strong> {{$view_case->patient->gender}}
                             </div>
+                            @endif
+
+                            @if($view_case->patient->occupation)
                             <div class="col-sm-12">
                                 <strong> Occupation:</strong> {{$view_case->patient->occupation}}
                             </div>
+                            @endif
+
+                            @if($view_case->patient->residency)
                             <div class="col-sm-12">
                                 <strong> Residency:</strong> {{$view_case->patient->residency}}
                             </div>
+                            @endif
+
                             @if($view_case->patient->veil)
                                 <div class="col-sm-12">
                                     <strong> Veil : </strong>
@@ -85,24 +111,37 @@
                         </div>
                     </div>
                     <div class="row">
+                        @if($view_case->patient->height)
                         <div class="col-sm-6">
                             <strong> Height:</strong> {{$view_case->patient->height}} CM
                         </div>
+                        @endif
+
+                        @if($view_case->patient->weight)
                         <div class="col-sm-6">
                             <strong> Weight:</strong> {{$view_case->patient->weight}} KG
                         </div>
+                        @endif
+
+                        @if($view_case->patient->weight && $view_case->patient->height)
                         <div class="col-sm-12">
                             <strong> BMI (Body Mass Index) : </strong>
                             <span class="color-green">
                                 {{getBMI($view_case->patient->height,$view_case->patient->weight)}}
                             </span>
                         </div>
+                        @endif
+
+                        @if($view_case->patient->smoking)
                         <div class="col-sm-12">
                             <strong> Smoking : </strong>
                             <span class="color-{{($view_case->patient->smoking == 'no')?'red':'green'}}">
                                 {{$view_case->patient->smoking}}
                             </span>
                         </div>
+                        @endif
+
+                        @if($view_case->patient->family_history)
                         <div class="col-sm-12">
                             <strong> Family history of fragility fracture : </strong>
 
@@ -110,6 +149,9 @@
                                 {{$view_case->patient->family_history}}
                             </span>
                         </div>
+                        @endif
+
+                        @if($view_case->patient->informed_consent)
                         <div class="col-sm-12">
                             <strong> Informed Consent : </strong>
                             @if($view_case->patient->informed_consent == 1)
@@ -117,6 +159,7 @@
                             @else
                                 <i class="fa fa-times color-red"> </i>
                             @endif
+                        @endif
                         </div>
                     </div>
                 </div>
