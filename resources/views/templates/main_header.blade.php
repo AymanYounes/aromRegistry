@@ -53,7 +53,7 @@
                             </li>
                             <li class="ml-lg-5 ml-md-5 ml-xs-0 mt-xs-10 ">
                                 <div class="widget no-border m-0">
-                                    <a class="btn btn-colored btn-flat btn-theme-colored btn-black-colored w-100"  href="{{url('/profile')}}">Profile</a>
+                                    <a class="btn btn-colored btn-flat btn-theme-colored btn-black-colored w-100"  href="{{url('/my-profile')}}">Profile</a>
                                 </div>
                             </li>
                             @else
