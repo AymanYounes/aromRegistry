@@ -385,7 +385,7 @@
                 showDropdowns: true,
                 minYear: 1950,
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY-MM-DD'
                 },
             });
         });
