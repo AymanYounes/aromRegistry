@@ -441,7 +441,7 @@ cases - Modal
   padding: 20px;
 }
 
-.personal-content ,.top-content,.risk-content{
+.report-content, .personal-content ,.top-content,.risk-content{
   padding: 10px 20px;
   margin-bottom: 5px;
 }

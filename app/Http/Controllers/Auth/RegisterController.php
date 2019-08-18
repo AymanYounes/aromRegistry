@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User_site;
 use Illuminate\Http\Request;
 use App\AromLibrary\AbstractClasses\Authentication;
 use App\Models\User;
@@ -33,7 +34,7 @@ class RegisterController extends Authentication
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,7 +49,16 @@ class RegisterController extends Authentication
 
 
 
-
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $sites = User_site::all();
+        return view('auth.register', compact('sites'));
+    }
 
 
 
@@ -60,12 +70,11 @@ class RegisterController extends Authentication
     public function postSignUp(Request $request)
     {
 
-
         $return = $this->signUp($request);
-//        dd($return['error']);
         if ($return['error'] == 0) {
             if (Auth::loginUsingId($return['data']->id)) {
-                return redirect('/projects');
+//                return redirect('/projects');
+                return redirect('/welcome');
             }
 
         } else {
@@ -75,6 +84,7 @@ class RegisterController extends Authentication
 
 
     }
+
 
 
 

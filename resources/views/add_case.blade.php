@@ -5,7 +5,9 @@
 
 
     <!-- CSS | Form steps -->
-    <link href="{{asset('css/jquery.steps.css')}}" rel="stylesheet" type="text/css">
+    {{--<link href="{{asset('css/jquery.steps.css')}}" rel="stylesheet" type="text/css">--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 @endsection
 
 
@@ -41,6 +43,8 @@
 
             <div class="row">
                 <div class="col-md-6 col-md-offset-2">
+
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-2 d-flex align-items-center">

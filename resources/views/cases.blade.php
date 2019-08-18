@@ -5,12 +5,6 @@
     <!-- CSS | Datatables -->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
-    <style>
-
-        .toggled_password,.toggled_name,.toggled_title,.toggled_address,.toggled_phone,.toggled_email{
-            display: none;
-        }
-    </style>
 @endsection
 @section('content')
 
@@ -37,9 +31,9 @@
                         <div class="section-content">
                             <div class="row">
                                 <div class="col-md-12 xs-text-center">
-                                    <h3 class="font-28">My Cases</h2>
+                                    <h3 class="font-28">My Cases</h3>
                                         <ol class="breadcrumb white mt-10">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="{{url('/')}}">Home</a></li>
                                             <li class="active text-theme-colored">My Cases</li>
                                         </ol>
                                 </div>
@@ -66,76 +60,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>53230</td>
-                                    <td><a href="javascript:void(0)">HFERe</a></td>
-                                    <td>08/12/1998</td>
-                                    <td>Ramy Mohamed Ibrahim</td>
-                                    <td>Prof. Khaled Zaky</td>
-                                    <td>Al Azhar University Hospitals  (ASSUIT)</td>
-                                    <td>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#case_view"><i class="fa fa-eye"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-dark btn-sm" ><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" ><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>53231</td>
-                                    <td><a href="javascript:void(0)">HFERe</a></td>
-                                    <td>03/12/1998</td>
-                                    <td>Ramy Mohamed Ibrahim</td>
-                                    <td>Prof. Khaled Zaky</td>
-                                    <td>Al Azhar University Hospitals  (ASSUIT)</td>
-                                    <td>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#case_view"><i class="fa fa-eye"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-dark btn-sm" ><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" ><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>53233</td>
-                                    <td><a href="javascript:void(0)">HFERe</a></td>
-                                    <td>03/12/1998</td>
-                                    <td>Ramy Mohamed Ibrahim</td>
-                                    <td>Prof. Khaled Zaky</td>
-                                    <td>Al Azhar University Hospitals  (ASSUIT)</td>
-                                    <td>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#case_view"><i class="fa fa-eye"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-dark btn-sm" ><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" ><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>53235</td>
-                                    <td><a href="javascript:void(0)">HFERe</a></td>
-                                    <td>08/12/1998</td>
-                                    <td>Ramy Mohamed Ibrahim</td>
-                                    <td>Prof. Khaled Zaky</td>
-                                    <td>Al Azhar University Hospitals  (ASSUIT)</td>
-                                    <td>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#case_view"><i class="fa fa-eye"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-dark btn-sm" ><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" ><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>53241</td>
-                                    <td><a href="javascript:void(0)">HFERe</a></td>
-                                    <td>03/12/1998</td>
-                                    <td>Ramy Mohamed Ibrahim</td>
-                                    <td>Prof. Khaled Zaky</td>
-                                    <td>Al Azhar University Hospitals  (ASSUIT)</td>
-                                    <td>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#case_view"><i class="fa fa-eye"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-dark btn-sm" ><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" ><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
+                                @php $counter = 0 @endphp
+                                @foreach($cases as $case)
+                                    @php $counter ++ @endphp
+                                    <tr data-rowId="{{$case->id}}">
+                                        <td>{{$counter}}</td>
+                                        <td>{{$case->id}}</td>
+                                        <td><a href="javascript:void(0)">{{$case->project->name}}</a></td>
+                                        <td>{{$case->visit}}</td>
+                                        <td>{{$case->patient->name}}</td>
+                                        <td>{{$case->user->name}}</td>
+                                        <td>{{$case->user->site->name}}</td>
+                                        <td>
+                                            <a href="javascript:void(0)" class="btn btn-info btn-sm case_view"  data-toggle="modal" data-target="#case_view_modal" data-id="{{$case->id}}"><i class="fa fa-eye"></i></a>
+                                            <a href="{{url('/update-case/'.$case->id)}}" class="btn btn-dark btn-sm case_edit" ><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-sm case_delete" data-id="{{$case->id}}"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -158,6 +102,9 @@
     </div>
     <!-- end main-content -->
 
+    <div class="modal" id="case_view_modal">
+
+    </div>
 
 
 @endsection
@@ -172,16 +119,50 @@
     <script>
         $(document).ready( function () {
             $('#myTable').DataTable();
-        } );
 
-        $(document).ready(function(){
-            $('#height').on('change',function(){
-                if($('#weight').val() != '' && $('#height').val() != '' ){
-                    var height_squar = (($('#height').val() * $('#height').val())/100)/100;
-                    var bmi_fixed_2 = Number(Number($('#weight').val()/height_squar).toFixed(2));
-                    $('#bmi').val(bmi_fixed_2);
+
+            $('.case_view').on('click',function () {
+                var id = $(this).data('id');
+
+                $.ajax({
+                    type:"GET",
+                    url: $("#RootURL").val()+'/view-case/'+id,
+                    dataType: "json",
+                    cache: false,
+                    success: function(result){
+
+                        $("#case_view_modal").html(result.view);
+                    },
+                    error: function (result) {
+                        //
+                    }
+                });
+
+            });
+
+            $('.case_delete').on('click',function () {
+                var id = $(this).data('id');
+                var delete_case = confirm("Are you sure that you want to delete this case?");
+                if (delete_case) {
+
+                    $.ajax({
+                        type:"GET",
+                        url: $("#RootURL").val()+'/delete-case/'+id,
+                        dataType: "json",
+                        cache: false,
+                        success: function(result){
+                            $('*[data-rowid='+id+']').addClass('d-none');
+                            alert('case has been deleted successfully')
+                        },
+                        error: function (result) {
+                            //
+                        }
+                    });
                 }
             });
-        })
+
+        } );
+
+
     </script>
 @endsection

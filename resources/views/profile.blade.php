@@ -1,30 +1,28 @@
 @extends('layouts.app')
-@section('title')Arom Egypt registry | Profile @endsection
+@section('title')Arom Egypt registry | {{$user->name}} Profile @endsection
 
 @section('style')
-    <style>
+    <!-- CSS | Datatables -->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
-        .toggled_password,.toggled_name,.toggled_title,.toggled_address,.toggled_phone,.toggled_email{
-            display: none;
-        }
-    </style>
 @endsection
+
 @section('content')
 
 
     <!-- Start main-content -->
     <div class="main-content">
         <!-- Section: inner-header -->
-        <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="images/slider/slider-3.jpg">
+        <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="{{asset('images/slider/slider-3.jpg')}}">
             <div class="container pt-90 pb-50">
                 <!-- Section Content -->
                 <div class="section-content">
                     <div class="row">
                         <div class="col-md-12 xs-text-center">
-                            <h3 class="font-28">My Profile</h3>
+                            <h3 class="font-28">{{$user->name}} Profile</h3>
                             <ol class="breadcrumb white mt-10">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active text-theme-colored">My Profile</li>
+                                <li><a href="{{url('/')}}">Home</a></li>
+                                <li class="active text-theme-colored">{{$user->name}} Profile</li>
                             </ol>
                         </div>
                     </div>
@@ -39,154 +37,110 @@
                     <div class="row">
                         <div class="col-sx-12 col-sm-4 col-md-4 sidebar pull-left">
                             <div class="doctor-thumb">
-                                <img src="images/dr-hesham.jpg" alt="">
+                                @if($user->permission != 1)
+                                    <a href="javascript:void(0)" data-id="{{$user->id}}" class="btn btn-colored btn-flat btn-theme-colored btn-black-colored make-user-admin" style="width: 90%; margin:5px 5%;">Promote user to be admin</a>
+                                @endif
+                                <img src="{{asset($user->image)}}" alt="{{$user->name}} picture">
                             </div>
-                            <ul class="social-icons icon-gray mt-15 mb-15">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-md-8 pull-right pl-60 pl-sm-15">
                             <div>
-                                <a style="float: right" id="edit_name"><i class="fa fa-edit"></i></a>
-                                <h3>Prof. Hesham Hamoud</h3>
-
-                                <div class="toggled_name">
-                                    <form action="#">
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Update</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                                <a style="float: right" id="edit_title"><i class="fa fa-edit"></i></a>
-                                <h5 class="text-theme-colored">MBBS (Sydney), FRACS (Paediatric Surgery)</h5>
-                                <div class="toggled_title">
-                                    <form action="#">
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label>Title</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Update</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                <h3 id="profile_name">{{$user->name}}</h3>
+                                <h5 class="text-theme-colored">{{($user->title)?$user->title:'user dosn\'t added his/her title'}}</h5>
                             </div>
                             <div class="mt-30">
                                 <dl class="dl-horizontal doctor-info">
-
                                     <dt>Address</dt>
                                     <dd>
-                                        Suite 27, Medical Centre, The Sunshine Coast Private Hospital, QLD 4556
-                                        <a style="float: right" id="edit_address"><i class="fa fa-edit"></i></a>
-                                        <div class="toggled_address">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        {{($user->address)?$user->address:'There is no address yet'}}
                                     </dd>
                                     <hr>
+
                                     <dt>Phone</dt>
                                     <dd>
-                                        +1-23-345-6789
-                                        <a style="float: right" id="edit_phone"><i class="fa fa-edit"></i></a>
-                                        <div class="toggled_phone">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>Phone</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        {{($user->phone)?$user->phone:'There is no phone yet'}}
                                     </dd>
                                     <hr>
+
                                     <dt>Email</dt>
                                     <dd>
-                                        myemail@yourdomain.com
-                                        <a style="float: right" id="edit_email"><i class="fa fa-edit"></i></a>
-
-                                        <div class="toggled_email">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>Email</label>
-                                                        <input type="email" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        {{($user->email)?$user->email:''}}
                                     </dd>
                                     <hr>
-                                    <dt>Password</dt>
-                                    <dd>
-                                        <a href="javascript:void(0)" id="change_password" class="text-theme-colored">Change Password</a>
 
-                                        <div class="toggled_password">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>Password</label>
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label>Confirm Password</label>
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                    </dd>
-                                    <hr>
                                 </dl>
                             </div>
                         </div>
 
                     </div>
+
+                    @if(Auth::user()->permission == 1)
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="cases-table" class="table-responsive" style="padding: 50px 20px;">
+
+                                <table id="myTable" class="table table-striped table-hover dt-responsive" cellspacing="0" width="">
+                                    <thead>
+                                    <tr>
+                                        <th class="th-sm">#</th>
+                                        <th class="th-sm">id</th>
+                                        <th class="th-sm">Project</th>
+                                        <th class="th-sm">Date</th>
+                                        <th class="th-sm">Patient</th>
+                                        <th class="th-sm">Doctor</th>
+                                        <th class="th-sm">Site</th>
+                                        <th class="th-sm">Operation</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php $counter = 0 @endphp
+                                    @foreach($cases as $case)
+                                        @php $counter ++ @endphp
+                                        <tr data-rowId="{{$case->id}}">
+                                            <td>{{$counter}}</td>
+                                            <td>{{$case->id}}</td>
+                                            <td><a href="javascript:void(0)">{{$case->project->name}}</a></td>
+                                            <td>{{$case->visit}}</td>
+                                            <td>{{$case->patient->name}}</td>
+                                            <td>{{$case->user->name}}</td>
+                                            <td>{{$case->user->site->name}}</td>
+                                            <td>
+                                                <a href="javascript:void(0)" class="btn btn-info btn-sm case_view"  data-toggle="modal" data-target="#case_view_modal" data-id="{{$case->id}}"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0)" class="btn btn-dark btn-sm case_edit" ><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0)" class="btn btn-danger btn-sm case_delete" data-id="{{$case->id}}"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ID</th>
+                                        <th>Project</th>
+                                        <th>Date</th>
+                                        <th>Patient</th>
+                                        <th>Doctor</th>
+                                        <th>Site</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </section>
     </div>
     <!-- end main-content -->
 
+
+    <div class="modal" id="case_view_modal">
+
+    </div>
 
 @endsection
 
@@ -195,42 +149,82 @@
 
 @section('script')
     <!-- Footer Scripts -->
+
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
     <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
 
-        $(document).ready(function(){
 
-            $('#change_password').on('click', function(event) {
-                $('.toggled_password').toggle('show');
+            $('.make-user-admin').on('click',function () {
+                var id = $(this).data('id');
+                var make_sure = confirm("Are you sure that you want to promote this user?");
+
+                if(make_sure){
+                    $.ajax({
+                        type:"GET",
+                        url: $("#RootURL").val()+'/make-user-admin/'+id,
+                        dataType: "json",
+                        cache: false,
+                        async: false,
+                        success: function(){
+
+                            $('.make-user-admin').hide();
+                        },
+                        error: function (result) {
+                            //
+                        }
+                    });
+                }
+
+
             });
 
 
-            $('#edit_name').on('click', function(event) {
-                $('.toggled_name').toggle('show');
+            $('.case_view').on('click',function () {
+                var id = $(this).data('id');
+
+                $.ajax({
+                    type:"GET",
+                    url: $("#RootURL").val()+'/view-case/'+id,
+                    dataType: "json",
+                    cache: false,
+                    success: function(result){
+
+                        $("#case_view_modal").html(result.view);
+                    },
+                    error: function (result) {
+                        //
+                    }
+                });
+
             });
 
+            $('.case_delete').on('click',function () {
+                var id = $(this).data('id');
+                var delete_case = confirm("Are you sure that you want to delete this case?");
+                if (delete_case) {
 
-            $('#edit_title').on('click', function(event) {
-                $('.toggled_title').toggle('show');
-            });
-
-
-            $('#edit_address').on('click', function(event) {
-                $('.toggled_address').toggle('show');
-            });
-
-
-            $('#edit_phone').on('click', function(event) {
-                $('.toggled_phone').toggle('show');
-            });
-
-
-            $('#edit_email').on('click', function(event) {
-                $('.toggled_email').toggle('show');
+                    $.ajax({
+                        type:"GET",
+                        url: $("#RootURL").val()+'/delete-case/'+id,
+                        dataType: "json",
+                        cache: false,
+                        success: function(result){
+                            $('*[data-rowid='+id+']').addClass('d-none');
+                            alert('case has been deleted successfully')
+                        },
+                        error: function (result) {
+                            //
+                        }
+                    });
+                }
             });
 
 
         });
-
     </script>
 
 @endsection

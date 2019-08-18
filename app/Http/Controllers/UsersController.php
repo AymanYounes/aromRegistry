@@ -15,7 +15,7 @@ use App\Models\User_site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CasesController extends Controller
+class UsersController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,7 +24,7 @@ class CasesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth' , 'adminCheck']);
     }
 
     /**
@@ -34,9 +34,9 @@ class CasesController extends Controller
      */
     public function index()
     {
-        $cases = Cases::where('user_id', Auth::user()->id )->get();
+        $users = User::all();
 
-        return view('cases' ,compact('cases','case_answers'));
+        return view('users' ,compact('users'));
     }
 
 
@@ -228,34 +228,5 @@ class CasesController extends Controller
             ->with('q_sections',$q_sections)
             ->with('residencies',$residencies)
             ->with('site',$site);
-    }
-
-    public function getUpdateProjectCase($case_id)
-    {
-
-
-        $case = Cases::find($case_id);
-
-        if(Auth::user()->id != $case->user->id && Auth::user()->permission != 1){
-            return redirect('/404');
-        }
-
-
-
-        $q_sections = Questionnaire_section::all();
-        $residencies = Questionnaire_residency::all();
-
-        return view('update_project_case')
-            ->with('case',$case)
-            ->with('q_sections',$q_sections)
-            ->with('residencies',$residencies);
-    }
-
-
-    public function getSystemCases()
-    {
-        $cases = Cases::all();
-//        dd($cases);
-        return view('system_cases',compact('cases'));
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title')Arom Egypt registry | Add {{$project->name}} case @endsection
+@section('title')Arom Egypt registry | Update {{$case->project->name}} case @endsection
 
 @section('style')
 
@@ -7,6 +7,13 @@
     <!-- CSS | Form steps -->
     <link href="{{asset('css/jquery.steps.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <style>
+        .steps ul li a{
+            background: rgba(100,100,100,0.1);
+        }
+    </style>
 @endsection
 
 
@@ -23,11 +30,11 @@
                         <div class="section-content">
                             <div class="row">
                                 <div class="col-md-12 xs-text-center">
-                                    <h3 class="font-28">Add {{$project->name}} case</h3>
+                                    <h3 class="font-28">Add {{$case->project->name}} case</h3>
                                         <ol class="breadcrumb white mt-10">
                                             <li><a href="{{url('/')}}">Home</a></li>
                                             <li class=""><a href="{{url('/cases')}}"></a>My Cases</a></li>
-                                            <li class="active text-theme-colored">Add {{$project->name}} case</li>
+                                            <li class="active text-theme-colored">Update {{$case->project->name}} case</li>
                                         </ol>
                                 </div>
                             </div>
@@ -39,9 +46,9 @@
                     <div class="col-md-12">
 
                         <form id="add_case_form" style="margin: 20px auto;" action="#">
-                            <input type="hidden" name="project_id" value="{{$project->id}}">
-                            <input type="hidden" id="case_status" name="case_status" value="create">
-                            <input type="hidden" name="case_id" value="0">
+                            <input type="hidden" name="project_id" value="{{$case->project->id}}">
+                            <input type="hidden" id="case_status" name="case_status" value="update">
+                            <input type="hidden" name="case_id" value="{{$case->id}}">
 
                             @csrf
                             <h3>Basic</h3>
@@ -54,7 +61,7 @@
                                             <label for="visit">Visit Date</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="visit" id="visit"  placeholder="Visit Date">
+                                            <input type="text" data-date="{{$case->visit}}" class="form-control" name="visit" id="visit"  placeholder="Visit Date">
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +72,7 @@
                                             <label for="project">Project</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <label>{{$project->name}}</label>
+                                            <label>{{$case->project->name}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -76,19 +83,19 @@
                                             <label for="doctor_name">Doctor</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <label>{{ Auth::user()->name }}</label>
+                                            <label>{{ $case->user->name }}</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                @if(isset($site))
+                                @if(isset($case->user->site))
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-2 d-flex align-items-center">
                                                 <label for="site">Site</label>
                                             </div>
                                             <div class="col-sm-10">
-                                                <label>{{ $site->name }}</label>
+                                                <label>{{ $case->user->site->name }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +114,7 @@
                                             <label for="patient_name">Name</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="patient_name" id="patient_name" required placeholder="Patient name">
+                                            <input type="text" class="form-control" value="{{($case->patient->name)?$case->patient->name:''}}" name="patient_name" id="patient_name" required placeholder="Patient name">
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +125,7 @@
                                             <label for="birthday">Birthday</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="birthday" id="birthday"  placeholder="Birthday">
+                                            <input type="text" class="form-control" data-date="{{$case->patient->birthday}}" name="birthday" id="birthday"  placeholder="Birthday">
                                         </div>
                                     </div>
                                 </div>
@@ -132,13 +139,13 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <label class="radio">
-                                                <input type="radio" value="male" name="gender" checked>
+                                                <input type="radio" value="male" name="gender" {{($case->patient->gender == 'male')?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">Male</div>
                                             </label>
 
                                             <label class="radio">
-                                                <input type="radio" value="female" name="gender">
+                                                <input type="radio" value="female" name="gender"  {{($case->patient->gender == 'female')?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">Female</div>
                                             </label>
@@ -156,7 +163,7 @@
                                         <div class="col-sm-10">
                                             <select class="form-control" name="residency" id="residency">
                                                 @foreach($residencies as $residency)
-                                                    <option value="{{$residency->id}}">{{$residency->name}}</option>
+                                                    <option value="{{$residency->id}}" {{($residency->id == $case->patient->patient_residency->id)?'selected':''}} >{{$residency->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -169,7 +176,7 @@
                                             <label for="occupation">Occupation</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="occupation" id="occupation"  placeholder="Occupation">
+                                            <input type="text" class="form-control" value="{{($case->patient->occupation)?$case->patient->occupation:''}}" name="occupation" id="occupation"  placeholder="Occupation">
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +188,7 @@
                                                 <label for="weight">Weight (kg)</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="weight" id="weight"  placeholder="Weight (kg)">
+                                                <input type="text" class="form-control" value="{{($case->patient->weight)?$case->patient->weight:''}}" name="weight" id="weight"  placeholder="Weight (kg)">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 d-flex align-items-center">
@@ -189,7 +196,7 @@
                                                 <label for="height">Height (CM)</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="height" id="height"  placeholder="Height (CM)">
+                                                <input type="text" class="form-control" value="{{($case->patient->height)?$case->patient->height:''}}" name="height" id="height"  placeholder="Height (CM)">
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +208,7 @@
                                             <label for="bmi">BMI (Body Mass Index)</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="bmi" id="bmi"  placeholder="BMI (Body Mass Index)">
+                                            <input type="text" class="form-control" value="{{($case->patient->height && $case->patient->weight)?getBMI($case->patient->height,$case->patient->weight):''}}" name="bmi" id="bmi" placeholder="BMI (Body Mass Index)">
                                         </div>
                                     </div>
                                 </div>
@@ -215,13 +222,13 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <label class="radio">
-                                                <input type="radio" value="yes" name="smoking" >
+                                                <input type="radio" value="yes" name="smoking" {{($case->patient->smoking == 'yes')?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">Yes</div>
                                             </label>
 
                                             <label class="radio">
-                                                <input type="radio" value="no" name="smoking" checked>
+                                                <input type="radio" value="no" name="smoking" {{($case->patient->smoking == 'no')?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">No</div>
                                             </label>
@@ -239,13 +246,13 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <label class="radio">
-                                                <input type="radio" value="yes" name="family_history" >
+                                                <input type="radio" value="yes" name="family_history" {{($case->patient->family_history == 'yes')?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">Yes</div>
                                             </label>
 
                                             <label class="radio">
-                                                <input type="radio" value="no" name="family_history" checked>
+                                                <input type="radio" value="no" name="family_history" {{($case->patient->family_history == 'no')?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">No</div>
                                             </label>
@@ -264,7 +271,7 @@
                                         <div class="col-sm-10">
 
                                             <label class="checkbox">
-                                                <input type="checkbox" name="informed_consent" value="1">
+                                                <input type="checkbox" name="informed_consent" value="1" {{($case->patient->informed_consent == 1)?'checked':''}}>
                                                 <span></span>
                                                 <div class="d-inline">Yes</div>
                                             </label>
@@ -276,8 +283,8 @@
 
                             </step_conent>
 
-                            @foreach($project->sections as $section)
-                                @if($section->name_short != 'History'||$section->name != 'Personal History')
+                            @foreach($case->project->sections as $section)
+                                @if($section->name_short != 'History' || $section->name != 'Personal History')
                                 <h3>{{$section->name_short}}</h3>
                                 <step_conent>
                                     <h2 class="text-theme-colored widget-title line-bottom">{{$section->name}}</h2>
@@ -291,7 +298,7 @@
                                                         <label for="{{$question_name}}">{{$question->question}}</label>
                                                     </div>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" name="{{$question_name}}" id="{{$question_name}}"  placeholder="{{($question->place_holder)?$question->place_holder:$question->question}}">
+                                                        <input type="text" class="form-control" value="{{($question->question_answer($case->id,$question->id) && $question->question_answer($case->id,$question->id)->answer )?$question->question_answer($case->id,$question->id)->answer:''}}" name="{{$question_name}}" id="{{$question_name}}"  placeholder="{{($question->place_holder)?$question->place_holder:$question->question}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -308,13 +315,24 @@
 
                                                             @if($question->type == 1)
                                                             <label class="radio">
-                                                                <input type="radio" value="{{strtolower($answer->answer)}}" name="{{$question_name}}">
+                                                                <input type="radio" value="{{strtolower($answer->answer)}}" name="{{$question_name}}"
+                                                                        {{($question->question_answer($case->id,$question->id)
+                                                                        && $question->question_answer($case->id,$question->id)->answer
+                                                                        && strtolower($question->question_answer($case->id,$question->id)->answer)
+                                                                        == strtolower($answer->answer))?
+                                                                        'checked':''
+                                                                        }}>
                                                                 <span></span>
                                                                 <div class="d-inline">{{$answer->answer}}</div>
                                                             </label>
                                                             @elseif($question->type == 2)
                                                                 <label class="checkbox">
-                                                                    <input type="checkbox" value="{{strtolower($answer->answer)}}" name="{{$question_name}}">
+                                                                    <input type="checkbox" value="{{strtolower($answer->answer)}}" name="{{$question_name}}"
+                                                                            {{($question->question_answer($case->id,$question->id)
+                                                                            && $question->question_answer($case->id,$question->id)->answer
+                                                                            && strtolower($question->question_answer($case->id,$question->id)->answer)
+                                                                            == strtolower($answer->answer))?'checked':''
+                                                                            }}>
                                                                     <span></span>
                                                                     <div class="d-inline">{{$answer->answer}}</div>
                                                                 </label>
@@ -322,12 +340,17 @@
 
                                                         @endforeach
                                                         @if($question->type == 4)
-                                                            <select class="form-control" name="{{$question_name}}" id="">
+                                                            <select class="form-control" name="{{$question_name}}" id=""  >
                                                                 @foreach($question->answers as $answer)
-                                                                    <option value="strtolower($answer->answer)}}">{{$answer->answer}}</option>
+                                                                    <option value="{{strtolower($answer->answer)}}" {{
+                                                                    ($question->question_answer($case->id,$question->id)
+                                                                    && $question->question_answer($case->id,$question->id)->answer
+                                                                    && strtolower($question->question_answer($case->id,$question->id)->answer)
+                                                                    == strtolower($answer->answer))?'selected':''}}>{{$answer->answer}}</option>
                                                                 @endforeach
                                                             </select>
                                                         @endif
+                                                        
                                                 </div>
 
 
@@ -338,13 +361,12 @@
                                         <!-- Date -->
                                         @elseif($question->type == 3)
 
-
                                         @endif
 
 
 
-
                                     @endforeach
+
 
                                 </step_conent>
                                 @endif
@@ -354,7 +376,7 @@
                             <h3>Finish</h3>
                             <step_conent>
                                 <legend>Your case updated successfully</legend>
-                                <a href="{{url('add-case/'.$project->id)}}" class="text-theme-colored"> add new case </a>
+                                <a href="{{url('add-case/'.$case->project->id)}}" class="text-theme-colored"> add new case </a>
                             </step_conent>
                         </form>
 
@@ -380,23 +402,32 @@
 
     <script>
         $(function() {
+            var start = $('input[name="visit"]').data('date');
+
             $('input[name="visit"]').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
                 minYear: 1950,
+                startDate: start,
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY-MM-DD'
                 },
             });
         });
         $(function() {
+            var start = $('input[name="birthday"]').data('date');
+
+            if(start == ''){
+                start = moment().subtract(20,'years');
+            }
+
             $('input[name="birthday"]').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
                 minYear: 1901,
-                startDate: moment().subtract(20,'years'),
+                startDate: start,
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY-MM-DD'
                 },
             });
         });
@@ -414,6 +445,7 @@
             bodyTag: "step_conent",
             transitionEffect: "slideLeft",
             enableFinishButton: "true",
+            enableAllSteps: true,
             onStepChanging: function (event, currentIndex, newIndex)
             {
                 // Allways allow previous action even if the current form is not valid!
@@ -489,14 +521,7 @@
             },
             onFinished: function (event, currentIndex)
             {
-                alert("Submitted!");
-            }
-        }).validate({
-            errorPlacement: function errorPlacement(error, element) { element.before(error); },
-            rules: {
-                confirm: {
-                    equalTo: "#password-2"
-                }
+                alert("Changes has been saved!");
             }
         });
 

@@ -42,4 +42,20 @@ class Questionnaire extends Model
         return $this->hasMany('App\Models\Answer', 'questionnaire_id');
     }
 
+
+    public function case_answers()
+    {
+        return $this->hasMany('App\Models\Case_answer', 'questionnaire_id');
+    }
+
+    public function question_answer($case_id,$question_id)
+    {
+
+        $case_answer = Case_answer::where('case_id',$case_id)->where('questionnaire_id',$question_id)->first();
+
+        return $case_answer;
+    }
+
+
+
 }

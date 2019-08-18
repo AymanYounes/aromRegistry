@@ -9,13 +9,27 @@
                     <ul class="menuzord-menu">
                         <li><a class="text-white" href="{{url('/')}}">Home</a> </li>
                         <li class="{{(Request::route()&& Request::route()->getName() == 'projectsIndex')?'active':''}}"><a class="text-white" href="{{url('/projects')}}">projects</a> </li>
-                        <li class="{{(Request::route()&& Request::route()->getName() == 'profileIndex')?'active':''}}"><a class="text-white" href="{{url('/profile')}}">My profile</a> </li>
-                        <li class="{{(Request::route()&& ( Request::route()->getName() == 'casesIndex' || Request::route()->getName() == 'casesAddCase'))?'active':''}}"><a class="text-white" href="{{url('/cases')}}">My cases</a> </li>
+                        <li class="{{(Request::route()&& Request::route()->getName() == 'profileGetMyProfile')?'active':''}}"><a class="text-white" href="{{route('profileGetMyProfile')}}">My profile</a> </li>
+                        <li class="{{
+                        (Request::route()&&
+                        ( Request::route()->getName() == 'casesIndex'
+                        || Request::route()->getName() == 'casesAddCase'
+                        || Request::route()->getName() == 'casesAddProjectCase'
+                        || Request::route()->getName() == 'casesUpdateProjectCase'
+                        ))?'active':''}}">
+                            <a class="text-white" href="{{url('/cases')}}">My cases</a>
+                        </li>
                         <li class=""><a class="text-white" href="{{url('/logout')}}">Log out</a> </li>
+                        <li  ><hr class="text-white"></li>
+                        @if(Auth::user()->permission == 1 )
+                            <li class="{{(Request::route()&& Request::route()->getName() == 'usersIndex')?'active':''}}"><a class="text-white" href="{{url('/users')}}">System users</a> </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="clearfix"></div>
-                <div class="vertical-nav-widget p-30 pt-10">
+
+                @if(Auth::user()->permission != 1 )
+                    <div class="vertical-nav-widget p-30 pt-10">
                     <div class="widget no-border">
                         <ul>
                             <li class="font-14 mb-5"> <i class="fa fa-phone mr-5 text-white"></i> <a class="text-white" href="tel:123456789">123-456-789</a> </li>
@@ -30,6 +44,7 @@
                         </ul>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -49,8 +64,10 @@
                 <a class="navbar__item navbar__link" href="{{url('/profile')}}">My profile</a>
                 <a class="navbar__item navbar__link" href="{{url('/cases')}}">My cases</a>
                 <a class="navbar__item navbar__link" href="{{url('/logout')}}">Log out</a>
+<hr>
+                <a class="navbar__item navbar__link" href="{{url('/users')}}">Users</a>
 
-
+                @if(Auth::user()->permission != 1 )
                 <div class="widget projects-social mt-30">
                     <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
                         <li><a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a></li>
@@ -62,7 +79,7 @@
                 <div class="nav-copy-right">
                     <p style="">Copyright &copy;2019 Arom Egypt Registry</p>
                 </div>
-
+                @endif
             </div>
 
 

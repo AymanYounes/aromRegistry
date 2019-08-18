@@ -74,72 +74,11 @@
                     <div class="wrap-input100 validate-input select-input-wrapper" data-validate = "Site is required">
                         <select class="input100 select-input" id="signup_site" name="site">
                             <option value=""> Site </option>
-                            <option value="5">
-                                Ain Shams University Hospital
-                            </option>
-                            <option value="1">
-                                Al Azhar University Hospitals BOYS&nbsp;(CAIRO)
-                            </option>
-                            <option value="4">
-                                Al Azhar University Hospitals&nbsp; (ASSUIT)
-                            </option>
-                            <option value="3">
-                                Al Azhar University Hospitals&nbsp; (DAMIETTA)
-                            </option>
-                            <option value="2">
-                                Al Azhar University Hospitals&nbsp; GIRLS (CAIRO)
-                            </option>
-                            <option value="10">
-                                Alexandria University Hospitals
-                            </option>
-                            <option value="11">
-                                Assiut University Hospital
-                            </option>
-                            <option value="21">
-                                Aswan University Hospital
-                            </option>
-                            <option value="12">
-                                Beni Suef University Hospital
-                            </option>
-                            <option value="6">
-                                Cairo University Hospitals
-                            </option>
-                            <option value="13">
-                                Fayoum university Hospital
-                            </option>
-                            <option value="15">
-                                Ismailia Teaching oncology hospital
-                            </option>
-                            <option value="16">
-                                Kafr Elsheikh University Hospital
-                            </option>
-                            <option value="17">
-                                Mansoura University Hospital
-                            </option>
-                            <option value="18">
-                                Minufiya University Hospital
-                            </option>
-                            <option value="9">
-                                MINYA University Hospitals
-                            </option>
-                            <option value="7">
-                                National Cancer Institute Egypt
-                            </option>
-                            <option value="8">
-                                Souaad Kafafi University Hospital
-                            </option>
-                            <option value="19">
-                                South Valley University Hospital
-                            </option>
-                            <option value="14">
-                                Suez Canal University Hospital
-                            </option>
-                            <option value="20">
-                                Tanta University Hospital
-                            </option>
-                            <option value="22">
-                                ZAGAZIG University Hospitals
-                            </option>
+                            @foreach($sites as $site)
+                                <option value="{{$site->id}}">
+                                    {{$site->name}}
+                                </option>
+                            @endforeach
                         </select>
                         <span class="focus-input100"></span>
                         <!-- <span class="label-input100">Site</span> -->
@@ -152,21 +91,21 @@
                         </button>
                     </div>
 
-                    <div class="text-center p-t-46 p-b-20">
-						<span class="txt2">
-							or sign up using
-						</span>
-                    </div>
+                    {{--<div class="text-center p-t-46 p-b-20">--}}
+						{{--<span class="txt2">--}}
+							{{--or sign up using--}}
+						{{--</span>--}}
+                    {{--</div>--}}
 
-                    <div class="login100-form-social flex-c-m">
-                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
-                        </a>
+                    {{--<div class="login100-form-social flex-c-m">--}}
+                        {{--<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">--}}
+                            {{--<i class="fa fa-facebook-f" aria-hidden="true"></i>--}}
+                        {{--</a>--}}
 
-                        <a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">
-                            <i class="fa fa-google" aria-hidden="true"></i>
-                        </a>
-                    </div>
+                        {{--<a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">--}}
+                            {{--<i class="fa fa-google" aria-hidden="true"></i>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
                     <p class="signup-p m-t-20">
                         Already have an account?
                         <a href="{{url('login')}}" class="signup-link">

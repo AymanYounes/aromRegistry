@@ -93,11 +93,6 @@
 
 @endif
 
-
-
-
-
-
 <div class="modal" id="case_view">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

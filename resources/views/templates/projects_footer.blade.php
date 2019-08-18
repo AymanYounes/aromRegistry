@@ -6,7 +6,7 @@
             <div class="col-sm-6 col-md-8 text-center border-right-black sm-height-auto">
                 <div class="footer-widget pt-70 pl-60 pr-60 pt-sm-10 pl-sm-10 pr-sm-10 maxwidth400 sm-text-center">
                     <div class="footer-logo border-bottom-dot-1px pb-30">
-                        <img class="mb-20" src="images/logo-0-tall.png" alt="" width="100px">
+                        <img class="mb-20" src="{{asset('images/logo-0-tall.png')}}" alt="Arom Egypt Registry" width="100px">
                         <p>This registries aim to create the first Mixed cohort study, retrospective and prospective cohort of patients with different rheumatic disorders from different governorates representing all of the Egyptian populations.</p>
                     </div>
                     <div class="footer-news-letter mt-30">

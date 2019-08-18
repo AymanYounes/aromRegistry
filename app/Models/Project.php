@@ -29,8 +29,6 @@ class Project extends Model
         return $this->hasMany('App\Models\Project_manager', 'project_id');
     }
 
-
-
     public function sections()
     {
         return $this->hasMany('App\Models\Questionnaire_section', 'project_id');
@@ -39,5 +37,10 @@ class Project extends Model
     public function questions()
     {
         return $this->hasMany('App\Models\Questionnaire', 'project_id');
+    }
+
+    public function cases()
+    {
+        return $this->hasMany('App\Models\Cases', 'patient_id');
     }
 }

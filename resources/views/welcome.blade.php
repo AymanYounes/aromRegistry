@@ -1,99 +1,92 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
+@section('title')Arom Egypt registry | Registration welcome @endsection
 
-        <title>Laravel</title>
+@section('style')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@endsection
+@section('content')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+<!-- Start main-content -->
+<div class="main-content" id="">
+    <input type="hidden" value="{{url('/projects')}}" name="url" id="url">
+    <section>
+        <div class="container-fluid p-0">
+            <!-- Section: inner-header -->
+            <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="images/header-1.jpg">
+                <div class="container pt-90 pb-50">
+                    <!-- Section Content -->
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-12 xs-text-center">
+                                <h3 class="font-28">Registration Successful</h3>
+                                <ol class="breadcrumb white mt-10">
+                                    <li><a href="{{url('/')}}">Home</a></li>
+                                    <li class="active text-theme-colored">Welcome</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @endif
+            </section>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="redirect" style="text-align: center;font-size: 18px;margin: 50px auto 0 auto;">
+                        System will redirect you automatically ...
+                    </div>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="welcome-wrapper p-20" style="
+                    border: solid #00A3C8 2px;
+                    text-align: center;
+                    margin: 0px auto;
+                    font-size: 28px;
+">
+                            Thanks for signing up to our arom registration<br>
+
+                            we're glade you're here<br>
+
+                            now you are arom insider you will be among the first to hear about upcoming news
+                        </div>
+                    </div>
                 </div>
+
+                <div class="row mb-150">
+                    <div class="col-sm-6 pr-0">
+                        <a href="{{url('/my-profile')}}" class=" p-20 btn btn-colored btn-flat btn-theme-colored btn-black-colored w-100">Profile Page</a>
+                    </div>
+                    <div class="col-sm-6 pl-0">
+                        <a href="{{url('/')}}" class=" p-20 btn btn-colored btn-flat btn-theme-colored w-100">Home Page</a>
+                    </div>
+                </div>
+
             </div>
+
+
         </div>
-    </body>
-</html>
+    </section>
+</div>
+<!-- end main-content -->
+
+
+
+@endsection
+
+
+
+
+@section('script')
+    <!-- Footer Scripts -->
+
+    <script>
+
+            var url= document.getElementById("url").value;
+
+            setTimeout(function(){window.location = url;}, 5000);
+
+    </script>
+@endsection

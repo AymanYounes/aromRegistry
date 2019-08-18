@@ -108,9 +108,12 @@
 <body class="{{(Request::route()
                 && (Request::route()->getName() == 'projectsIndex'
                 || Request::route()->getName() == 'profileIndex'
+                || Request::route()->getName() == 'profileGetMyProfile'
                 || Request::route()->getName() == 'casesAddCase'
                 || Request::route()->getName() == 'casesAddProjectCase'
-                || Request::route()->getName() == 'casesIndex'))?
+                || Request::route()->getName() == 'casesUpdateProjectCase'
+                || Request::route()->getName() == 'casesIndex'
+                || Request::route()->getName() == 'usersIndex'))?
                 'vertical-nav':''
             }}">
 
@@ -151,9 +154,12 @@
     && Request::route()->getName() != 'register'
     && Request::route()->getName() != 'projectsIndex'
     && Request::route()->getName() != 'profileIndex'
+    && Request::route()->getName() != 'profileGetMyProfile'
+    && Request::route()->getName() != 'usersIndex'
     && Request::route()->getName() != 'casesIndex'
     && Request::route()->getName() != 'casesAddCase'
     && Request::route()->getName() != 'casesAddProjectCase'
+    && Request::route()->getName() != 'casesUpdateProjectCase'
     && Request::route()->getName() != 'password.request'
     && !isset($exception))
         @include('templates.main_header')
@@ -167,15 +173,18 @@
     @endif
 
     @yield('content')
-
+    @include('hiddens.global')
 
     @if (Request::route()
     && Request::route()->getName() != 'login'
     && Request::route()->getName() != 'register'
     && Request::route()->getName() != 'casesAddCase'
     && Request::route()->getName() != 'casesAddProjectCase'
+    && Request::route()->getName() != 'casesUpdateProjectCase'
     && Request::route()->getName() != 'projectsIndex'
     && Request::route()->getName() != 'profileIndex'
+    && Request::route()->getName() != 'profileGetMyProfile'
+    && Request::route()->getName() != 'usersIndex'
     && Request::route()->getName() != 'casesIndex'
     && Request::route()->getName() != 'password.request'
     && !isset($exception))
@@ -185,6 +194,7 @@
     || Request::route()->getName() == 'register'
     || Request::route()->getName() == 'casesAddCase'
     || Request::route()->getName() == 'casesAddProjectCase'
+    || Request::route()->getName() == 'casesUpdateProjectCase'
     || Request::route()->getName() == 'password.request'
     )
     && !isset($exception))
@@ -195,7 +205,7 @@
 
 
 
-        <script src="{{url('js/custom.js')}}"></script>
+    <script src="{{url('js/custom.js')}}"></script>
 @yield('script')
 
 
