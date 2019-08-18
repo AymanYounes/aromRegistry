@@ -324,7 +324,7 @@
                                                         @if($question->type == 4)
                                                             <select class="form-control" name="{{$question_name}}" id="">
                                                                 @foreach($question->answers as $answer)
-                                                                    <option value="strtolower($answer->answer)}}">{{$answer->answer}}</option>
+                                                                    <option value="{{strtolower($answer->answer)}}">{{$answer->answer}}</option>
                                                                 @endforeach
                                                             </select>
                                                         @endif

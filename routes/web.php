@@ -22,16 +22,14 @@ Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'homeIndex']);
 
 /******************************************  Authentication Routes Start  ******************************************/
 //Route::group(['prefix' => 'auth'], function () {
-    Route::post('signup', ['uses' => 'Auth\RegisterController@postSignUp', 'as' => 'registerPostSignUp']);
-    Route::post('checkuseremail', ['uses' => 'Ajax\RegisterController@postCheckUserEmail', 'as' => 'ajaxAuthenticationPostCheckUserEmail']);
-
-    Route::post('post-login', ['uses' => 'Auth\LoginController@postLogin', 'as' => 'loginPostLogin']);
-
-    Route::get('logout', ['uses' => 'Auth\LoginController@logout', 'as' => 'loginLogout']);
+    Route::post('/signup', ['uses' => 'Auth\RegisterController@postSignUp', 'as' => 'registerPostSignUp']);
+    Route::post('/checkuseremail', ['uses' => 'Ajax\RegisterController@postCheckUserEmail', 'as' => 'ajaxAuthenticationPostCheckUserEmail']);
+    Route::post('/post-login', ['uses' => 'Auth\LoginController@postLogin', 'as' => 'loginPostLogin']);
+    Route::get('/logout', ['uses' => 'Auth\LoginController@logout', 'as' => 'loginLogout']);
+    Route::get('/welcome', ['uses' => 'ProfileController@getWelcome', 'as' => 'profileGetWelcome']);
 
 //});
 
-Route::get('/welcome', ['uses' => 'ProfileController@getWelcome', 'as' => 'profileGetWelcome']);
 
 Route::get('/projects', ['uses' => 'ProjectsController@index', 'as' => 'projectsIndex']);
 

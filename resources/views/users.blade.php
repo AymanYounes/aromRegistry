@@ -70,7 +70,7 @@
                                         <td>{{$user->address}}</td>
                                         <td>{{count($user->cases)}}</td>
                                         <td>
-                                            <a href="javascript:void(0)" class="btn btn-info btn-sm user_view"  data-toggle="modal" data-target="#case_view_modal" data-id="{{$user->id}}"><i class="fa fa-eye"></i></a>
+                                            <a href="{{url('/profile/'.$user->id)}}" class="btn btn-info btn-sm" ><i class="fa fa-eye"></i></a>
                                             <a href="javascript:void(0)" class="btn btn-danger btn-sm user_delete" data-id="{{$user->id}}"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>

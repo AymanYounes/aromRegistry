@@ -90,14 +90,17 @@ class CasesController extends Controller
     }
 
 
-    public function insertCaseAnswersQuestionAndAnswerFields($quesion_id,$answer)
+    public function insertCaseAnswersQuestionAndAnswerFields($question_id,$answer)
     {
 
         $return_array =[];
-        $question_type = Questionnaire::find($quesion_id);
+        $question_type = Questionnaire::find($question_id);
         if(isset($question_type) &&$question_type-> type != 0){
 
-            $answer_value = Answer::where('answer',$answer)->where('questionnaire_id',$quesion_id)->first();
+            $answer_value = Answer::where('answer',$answer)
+                ->where('questionnaire_id',$question_id)
+                ->first();
+
 
             $return_array['answer_id'] = $answer_value->id;
             if($answer != null){
