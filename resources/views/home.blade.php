@@ -508,6 +508,8 @@
                                 and to thank you for choosing our web site to participate in this great research
                                 we looks forward to providing you with all material you need in scientific research.
                             </p>
+                            <p class="mt-20"><img src="{{asset('images/signature.png')}}" alt="Prof. Hesham Hamoud"></p>
+
                         </div>
 
                     </div>
@@ -534,7 +536,7 @@
                         </ul>
 
 
-                        <p class="mt-20"><img src="images/signature.png" alt=""></p>
+                        {{--<p class="mt-20"><img src="{{asset('images/signature.png')}}" alt="Prof. Hesham Hamoud"></p>--}}
                         <!-- <a href="#" class="btn btn-default btn-lg mt-15 mb-md-30">Read more</a> -->
                     </div>
                 </div>
@@ -573,201 +575,44 @@
 
                     <div class="panel-group accordion style2 mb-0 mt-20 col-xs-12" id="accordion2">
                         <div class="col-md-6 col-sm-12">
-
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion21" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> SpAERe - AS </a> </div>
-                                <div class="panel-collapse collapse" id="accordion21">
-                                    <div class="panel-content pb-50">
-                                        <h6>SpondyloArthritis Egyptian Registry</h6>
-                                        <p>Concerning the initial treatment of SpAs in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of ACR/EULAR management recommendations, the unmet needs with Cs DMARDs and the constraints of biological usage.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
+                            @foreach($projects as $project)
+                                @if(($projects_count/2)+1 > $project->id)
+                                    <div class="panel">
+                                        <div class="panel-title">
+                                            <a href="#{{'accordion'.$project->id}}" data-toggle="collapse" data-parent="#accordion2">
+                                                <span class="open-sub"></span> {{$project->name}}
+                                            </a>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="{{'accordion'.$project->id}}">
+                                            <div class="panel-content pb-50">
+                                                <h6>{{$project->name_full}}</h6>
+                                                <p>{{$project->short_desc}}</p>
+                                                <a href="javascript:void(0)" class="btn btn-lg btn-dark btn-theme-colored float-right projects_readmore" data-animation="one" data-modal="project_{{$project->id}}"> Read More </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion22" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> SpAERe - Psoriasis </a> </div>
-                                <div class="panel-collapse collapse" id="accordion22">
-                                    <div class="panel-content pb-50">
-                                        <h6>SpondyloArthritis Egyptian Registry</h6>
-                                        <p>Concerning the initial treatment of SpAs in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of ACR/EULAR management recommendations, the unmet needs with Cs DMARDs and the constraints of biological usage.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion23" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> SpAERe - Non Radiographic Axial SpA </a> </div>
-                                <div class="panel-collapse collapse" id="accordion23">
-                                    <div class="panel-content pb-50">
-                                        <h6>SpondyloArthritis Egyptian Registry</h6>
-                                        <p>Concerning the initial treatment of SpAs in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of ACR/EULAR management recommendations, the unmet needs with Cs DMARDs and the constraints of biological usage.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion24" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> OPERe </a> </div>
-                                <div class="panel-collapse collapse" id="accordion24">
-                                    <div class="panel-content pb-50">
-                                        <h6>Osteoporosis Egyptian Registry</h6>
-                                        <p>Concerning the initial treatment of osteoporosis in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis and use/abuse of the management recommendations.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion25" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> RAERe </a> </div>
-                                <div class="panel-collapse collapse" id="accordion25">
-                                    <div class="panel-content pb-50">
-                                        <h6>Rheumatoid Arthritis Registry</h6>
-                                        <p>Concerning the initial treatment of Rheumatoid arthritis in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of ACR/EULAR management recommendations, the unmet needs with Conventional DMARDs and the constraints of biological usage.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion26" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> MEGRA </a> </div>
-                                <div class="panel-collapse collapse" id="accordion26">
-                                    <div class="panel-content pb-50">
-                                        <h6>Methotrexate EGyptian Registry in Rheumatoid Arthritis</h6>
-                                        <p>Concerning the initial treatment of rheumatoid arthritis in practice the project proposes to describe the Egyptian daily clinical practice reality.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion27" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> ESKOAERe </a> </div>
-                                <div class="panel-collapse collapse" id="accordion27">
-                                    <div class="panel-content pb-50">
-                                        <h6>Early Symptomatic Knee Osteoarthritis Egyptian Registry</h6>
-                                        <ul>
-                                            <li>
-                                                <strong>Phase 1:</strong>
-                                                (Qualitative Research). Define the OA early symptomatic disease
-                                            </li>
-                                            <li>
-                                                <strong>Phase 2:</strong>
-                                                ESKOAERe register Study the natural history of OA from the earliest precocious (Non-radiographic) areas of studying risk factors and influence of therapeutic factors outcomes as long term illness.
-                                            </li>
-                                            <li>
-                                                <strong>Phase 3:</strong>
-                                                (Study ESKOAERe Promote, draw, coordinate and conduct an early international study report.
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion28" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> SLERe  </a> </div>
-                                <div class="panel-collapse collapse" id="accordion28">
-                                    <div class="panel-content pb-50">
-                                        <h6>Systemic Lupus Egyptian Registry</h6>
-                                        <p>General serological objective of SLE-treated patients in Egypt treated with the Describe the socio-demographic, clinical and currently used therapeutic characteristics traditional and / or with biological drugs. Evaluate the efficacy and safety of therapies.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-
+                                @endif
+                            @endforeach
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion29" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> VascERe  </a> </div>
-                                <div class="panel-collapse collapse" id="accordion29">
-                                    <div class="panel-content pb-50">
-                                        <h6>Vasculitis Egyptian Registry</h6>
-                                        <p>Concerning the initial treatment of Vasculitis in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of management recommendations, the unmet needs with DMARDs and immunosuppressive drugs.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
+                            @foreach($projects as $project)
+                                @if(($projects_count/2)+1 < $project->id)
+                                    <div class="panel">
+                                        <div class="panel-title">
+                                            <a href="#{{'accordion'.$project->id}}" data-toggle="collapse" data-parent="#accordion2">
+                                                <span class="open-sub"></span> {{$project->name}}
+                                            </a>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="{{'accordion'.$project->id}}">
+                                            <div class="panel-content pb-50">
+                                                <h6>{{$project->name_full}}</h6>
+                                                <p>{{$project->short_desc}}</p>
+                                                <a href="javascript:void(0)" class="btn btn-lg btn-dark btn-theme-colored float-right projects_readmore" data-animation="one" data-modal="project_{{$project->id}}"> Read More </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion30" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> OcumERe  </a> </div>
-                                <div class="panel-collapse collapse" id="accordion30">
-                                    <div class="panel-content pb-50">
-                                        <h6>Ocular manifestations of rheumatic disorders Egyptian Registry</h6>
-                                        <p>Concerning the initial treatment of Rheumatic diseases with ocular affection in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis of ocular affection with most rheumatic diseases.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion31" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> BAERe   </a> </div>
-                                <div class="panel-collapse collapse" id="accordion31">
-                                    <div class="panel-content pb-50">
-                                        <h6>Biological Agents Egyptian Registry</h6>
-                                        <p>  Concerning the initial treatment of biological agents in daily practice, this project proposes to describe the Egyptian daily clinical practice reality, use/abuse of ACR/EULAR management recommendations, and the unmet needs with biological usage.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion32" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> HFERe </a> </div>
-                                <div class="panel-collapse collapse" id="accordion32">
-                                    <div class="panel-content pb-50">
-                                        <h6>Hip Fracture Egyptian Registry</h6>
-                                        <p>Concerning the initial assessment of Hip Fracture in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion33" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> CLumERe </a> </div>
-                                <div class="panel-collapse collapse" id="accordion33">
-                                    <div class="panel-content pb-50">
-                                        <h6>Cervico-Lumbar Radiculopathy Egyptian Registry</h6>
-                                        <p>Concerning the initial assessment and management of cervico-lumabar radiculopathy in daily practice, this project proposes to describe the Egyptian daily clinical practice reality.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion34" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> SCLERe  </a> </div>
-                                <div class="panel-collapse collapse" id="accordion34">
-                                    <div class="panel-content pb-50">
-                                        <h6>Scleroderma Egyptian Registry</h6>
-                                        <p>  Concerning the initial treatment of Systemic sclerosis in daily practice this project proposes to describe the Egyptian daily clinical practice reality, delayed diagnosis, use/abuse of ACR/EULAR management recommendations, the unmet needs with DMARDs and the immunosuppressive drugs.</p>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-title"> <a href="#accordion35" data-toggle="collapse" data-parent="#accordion2">
-                                        <span class="open-sub"></span> CAERe   </a> </div>
-                                <div class="panel-collapse collapse" id="accordion35">
-                                    <div class="panel-content pb-50">
-                                        <h6>Crystal induced Arthritis Egyptian Registry</h6>
-                                        <ul>
-                                            <li>
-                                                Identifying prognostic factors of damage and disability
-                                            </li>
-                                            <li>
-                                                Evaluating the efficacy and safety of drugs in clinical practice
-                                            </li>
-                                            <li>
-                                                Evaluating adherence to the recommendations on the clinical validating the application of the prospective criteria ACR/EULAR for gout diagnosis
-                                            </li>
-                                            <li>
-                                                Validate & Develop a disease activity score in gout and validate diagnostic tools for CPP arthritis
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-lg btn-dark btn-theme-colored float-right" href="#"> Details</a>
-                                    </div>
-                                </div>
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
 
@@ -791,7 +636,7 @@
                                 <a class="icon icon-gray icon-bordered icon-circled icon-border-effect effect-circled" href="#">
                                     <i class="fa fa-user-md"></i>
                                 </a>
-                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="120">0</h5>
+                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$users_count}}">0</h5>
                                 <p class="count-text">signed up doctor</p>
                             </div>
 
@@ -799,16 +644,17 @@
                                 <a class="icon icon-gray icon-bordered icon-circled icon-border-effect effect-circled" href="#">
                                     <i class="fa fa-heartbeat"></i>
                                 </a>
-                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="5000">0</h5>
+                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$patients_count}}">0</h5>
                                 <p class="count-text">Patient case</p>
                             </div>
 
                             <div class="counter col_third end icon-box iconbox-theme-colored">
-                                <a class="icon icon-gray icon-bordered icon-circled icon-border-effect effect-circled" href="#">
-                                    <i class="fa fa-user"></i>
+                                <a class="icon icon-gray icon-bordered icon-circled icon-border-effect effect-circled" href="javascript:void(0)">
+                                    {{--<i class="fa fa-user"></i>--}}
+                                    <i class="fa fa-tasks"></i>
                                 </a>
-                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="500">0</h5>
-                                <p class="count-text">visitors</p>
+                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$projects_count}}">0</h5>
+                                <p class="count-text">Projects</p>
                             </div>
 
                         </div>
@@ -1005,14 +851,6 @@
 
 
 
-        asamy el sharekat
-
-        1- Amgen
-        2- Pfizer
-        3- Novartis
-        -->
-
-
         <!-- Section: sponsers -->
         <section id="sponsers">
             <div class="container pb-200">
@@ -1181,6 +1019,10 @@
 
     </div>
     <!-- end main-content -->
+
+
+
+    @include('templates.projects_modals')
 @endsection
 
 
