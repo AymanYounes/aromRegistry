@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectsTable extends Migration
+class ProjectManagers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        //
+        Schema::create('project_managers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigIncrements('project_id');
             $table->string('name')->nullable();
-            $table->text('name_full')->nullable();
             $table->string('image')->nullable();
-            $table->text('short_desc')->nullable();
-//            $table->string('managers')->nullable();
-            $table->text('objectives')->nullable();
-            $table->text('study_design')->nullable();
-            $table->text('outcome_variables')->nullable();
-            $table->text('analysis_plan')->nullable();
+            $table->string('work_place')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +31,8 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        //
+
+        Schema::dropIfExists('project_managers');
     }
 }
