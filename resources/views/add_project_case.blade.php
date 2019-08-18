@@ -396,7 +396,7 @@
                 minYear: 1901,
                 startDate: moment().subtract(20,'years'),
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY-MM-DD'
                 },
             });
         });
