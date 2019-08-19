@@ -502,13 +502,13 @@
                     <div class="col-md-8">
 
                         <div class="home-block-quotes">
-                            <h1>dear colleague,</h1>
+                            <h1>Dear colleague,</h1>
                             <p class="pt-font text-center p-20">
                                 I would like to take this opportunity to welcome you in our registration
-                                and to thank you for choosing our web site to participate in this great research
-                                we looks forward to providing you with all material you need in scientific research.
+                                and to thank you for choosing our website to participate in this great research
+                                we look forward to providing you with all material you need in scientific research.
                             </p>
-                            <p class="mt-20"><img src="{{asset('images/signature.png')}}" alt="Prof. Hesham Hamoud"></p>
+                            <p class="mt-20"><img src="{{asset('images/signature.png')}}" width="150" alt="Prof. Hesham Hamoud"></p>
 
                         </div>
 
@@ -525,13 +525,13 @@
                         <h3 class="text-gray-silver font-playfair mt-10 mt-sm-30 mb-0">About</h3>
                         <h1 class="font-playfair mt-0 text-theme-colored">Arom Egypt Registry</h1>
                         <ul class="list theme-colored angle-double-right list-border-bottom">
-                            <li  class="mt-10 font-16">This registries aim to create the first Mixed cohort study, retrospective and prospective cohort of patients with different rheumatic disorders from different governorates representing all of the Egyptian populations.
+                            <li  class="mt-10 font-16">These registries aim to create the first Mixed cohort study, retrospective and prospective cohort of patients with different rheumatic disorders from different governorates representing all the Egyptian populations.
                             </li>
-                            <li class="mt-10 varela-font font-16">To trace the path of the patient by analyzing the initial diagnostic phase, the therapeutic choice of the acute attack and the long-term management of the patient with different rheumatic disorders from different governorates representing all of the Egyptian populations.
+                            <li class="mt-10 varela-font font-16">To trace the path of the patient by analyzing the initial diagnostic phase, the therapeutic choice of the acute attack and the long-term management of the patient with different rheumatic disorders from different governorates representing all the Egyptian populations.
                             </li>
                             <li class="mt-10 varela-font font-16">To identifying critical pathways and studying prognostic and efficacy of the treatments in clinical practice.
                             </li>
-                            <li  class="mt-10 varela-font font-16">To identifying the appropriateness of the diagnostic and therapeutic phases in the management of patients with different rheumatic disorders from different governorates representing all of the Egyptian populations.
+                            <li  class="mt-10 varela-font font-16">To identifying the appropriateness of the diagnostic and therapeutic phases in the management of patients with different rheumatic disorders from different governorates representing all the Egyptian populations.
                             </li>
                         </ul>
 
@@ -565,7 +565,7 @@
                                 <li>To enable a national real world documentation of many different aspects.</li>
                                 <li>To facilitate the work of rheumatological scientific research.</li>
                                 <li>To follow up your patients easily.</li>
-                                <li>To improve the health care and tretment for rheumatological patients.</li>
+                                <li>To improve the health care and treatment for rheumatological patients.</li>
 
                             </ul>
                         </div>
