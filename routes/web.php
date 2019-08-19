@@ -46,7 +46,7 @@ Route::get('/projects', ['uses' => 'ProjectsController@index', 'as' => 'projects
     Route::get('/add-case', ['uses' => 'CasesController@getAddCase', 'as' => 'casesAddCase']);
     Route::post('/create-case', ['uses' => 'CasesController@postCreateCase', 'as' => 'casesPostCreateCase']);
     Route::post('/update-case', ['uses' => 'CasesController@postCreateCase', 'as' => 'casesPostCreateCase']);
-    Route::get('/view-case/{id}', ['uses' => 'CasesController@getViewCase', 'as' => 'casesGetViewCase']);
+    Route::get('/view-case/{id}', ['uses' => 'Ajax\CasesController@getViewCase', 'as' => 'casesGetViewCase']);
     Route::get('/print-case/{id}', ['uses' => 'CasesController@getPrintCase', 'as' => 'casesGetPrintCase']);
     Route::get('/delete-case/{id}', ['uses' => 'CasesController@getDeleteCase', 'as' => 'casesGetDeleteCase']);
     Route::post('/update-case', ['uses' => 'CasesController@postCreateCase', 'as' => 'casesPostCreateCase']);

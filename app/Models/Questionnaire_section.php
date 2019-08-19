@@ -32,4 +32,9 @@ class Questionnaire_section extends Model
         return $this->belongsTo('App\Models\project', 'project_id');
     }
 
+    public function sub_section()
+    {
+        return $this->belongsTo('App\Models\Questionnaire_sub_section', 'project_id');
+    }
+
 }

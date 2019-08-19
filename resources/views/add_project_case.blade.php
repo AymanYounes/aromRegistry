@@ -276,6 +276,7 @@
 
                             </step_conent>
 
+                            @php $last_sub = 0 @endphp
                             @foreach($project->sections as $section)
                                 @if($section->name_short != 'History'||$section->name != 'Personal History')
                                 <h3>{{$section->name_short}}</h3>
@@ -283,6 +284,18 @@
                                     <h2 class="text-theme-colored widget-title line-bottom">{{$section->name}}</h2>
                                     @foreach($section->question as $question)
                                         @php $question_name = strtolower($question->question).'__'.$question->id; @endphp
+
+                                        @if((isset($question->sub_section_id) && $question->sub_section_id != 0 ) && $question->sub_section_id != $last_sub)
+                                            @php $last_sub = $question->sub_section_id; @endphp
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12 d-flex align-items-center">
+                                                        <h2>{{$question->sub_sections->name}}</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        @endif
                                         <!-- Text Box -->
                                         @if($question->type == 0)
                                             <div class="form-group">
@@ -340,8 +353,6 @@
 
 
                                         @endif
-
-
 
 
                                     @endforeach
