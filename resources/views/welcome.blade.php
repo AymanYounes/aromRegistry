@@ -86,7 +86,7 @@
 
             var url= document.getElementById("url").value;
 
-            setTimeout(function(){window.location = url;}, 5000);
+            setTimeout(function(){window.location = url;}, 15000);
 
     </script>
 @endsection

@@ -176,21 +176,25 @@
 
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-sm-6 d-flex align-items-center">
-                                            <div class="col-sm-4">
-                                                <label for="weight">Weight (kg)</label>
+                                        <div class="col-sm-12 p-0">
+
+                                            <div class="col-sm-6 p-0 d-flex align-items-center">
+                                                <div class="col-sm-4">
+                                                    <label for="weight">Weight (kg)</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="weight" id="weight"  placeholder="Weight (kg)">
+                                                </div>
                                             </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="weight" id="weight"  placeholder="Weight (kg)">
+                                            <div class="col-sm-6 p-0 d-flex align-items-center">
+                                                <div class="col-sm-4">
+                                                    <label for="height">Height (CM)</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="height" id="height"  placeholder="Height (CM)">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 d-flex align-items-center">
-                                            <div class="col-sm-4">
-                                                <label for="height">Height (CM)</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="height" id="height"  placeholder="Height (CM)">
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -230,29 +234,31 @@
                                     </div>
                                 </div>
 
+                                @if($project->id != 4 || $project->id != 5)
+                                    <div class="form-group">
+                                        <div class="row">
 
-                                <div class="form-group">
-                                    <div class="row">
+                                            <div class="col-sm-2 d-flex align-items-center">
+                                                <label for="family_history">Family history of fragile fracture</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <label class="radio">
+                                                    <input type="radio" value="yes" name="family_history" >
+                                                    <span></span>
+                                                    <div class="d-inline">Yes</div>
+                                                </label>
 
-                                        <div class="col-sm-2 d-flex align-items-center">
-                                            <label for="family_history">Family history of fragile fracture</label>
+                                                <label class="radio">
+                                                    <input type="radio" value="no" name="family_history" checked>
+                                                    <span></span>
+                                                    <div class="d-inline">No</div>
+                                                </label>
+                                            </div>
+
                                         </div>
-                                        <div class="col-sm-10">
-                                            <label class="radio">
-                                                <input type="radio" value="yes" name="family_history" >
-                                                <span></span>
-                                                <div class="d-inline">Yes</div>
-                                            </label>
-
-                                            <label class="radio">
-                                                <input type="radio" value="no" name="family_history" checked>
-                                                <span></span>
-                                                <div class="d-inline">No</div>
-                                            </label>
-                                        </div>
-
                                     </div>
-                                </div>
+
+                                @endif
 
 
                                 <div class="form-group">

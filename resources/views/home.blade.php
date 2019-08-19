@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title')Arom Egypt registry | Home @endsection
+@section('title')AROM Egypt registry | Home @endsection
 @section('content')
 
     <!-- Start main-content -->
@@ -124,7 +124,7 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">
-                                    First Web site Rheumatology Registeration in EGYPT
+                                    First Website Rheumatology Registeration in EGYPT
 
                                 </div>
 
@@ -328,7 +328,7 @@
                                      data-hoffset="['30']"
                                      data-y="['middle']"
                                      data-voffset="['-45']"
-                                     data-fontsize="['22']"
+                                     data-fontsize="['30']"
                                      data-lineheight="['70']"
 
                                      data-width="none"
@@ -343,7 +343,34 @@
                                      data-splitin="none"
                                      data-splitout="none"
                                      data-responsive_offset="on"
-                                     style="z-index: 7; white-space: nowrap; font-weight:600;">the simplest method to register & follow up your cases
+                                     style="z-index: 7; white-space: nowrap; font-weight:600;">The simplest method to register
+                                </div>
+
+
+
+                                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent pl-15 pr-15"
+                                     id="rs-3-layer-2"
+
+                                     data-x="['center']"
+                                     data-hoffset="['30']"
+                                     data-y="['middle']"
+                                     data-voffset="['45']"
+                                     data-fontsize="['30']"
+                                     data-lineheight="['70']"
+
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;s:500"
+                                     data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                                     data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                                     data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                     data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 7; white-space: nowrap; font-weight:600;">Follow up your cases
                                 </div>
 
                                 <!-- LAYER NR. 3 -->
@@ -523,7 +550,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="text-gray-silver font-playfair mt-10 mt-sm-30 mb-0">About</h3>
-                        <h1 class="font-playfair mt-0 text-theme-colored">Arom Egypt Registry</h1>
+                        <h1 class="font-playfair mt-0 text-theme-colored">AROM Egypt Registry</h1>
                         <ul class="list theme-colored angle-double-right list-border-bottom">
                             <li  class="mt-10 font-16">These registries aim to create the first Mixed cohort study, retrospective and prospective cohort of patients with different rheumatic disorders from different governorates representing all the Egyptian populations.
                             </li>
@@ -637,7 +664,7 @@
                                     <i class="fa fa-user-md"></i>
                                 </a>
                                 <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$users_count}}">0</h5>
-                                <p class="count-text">signed up doctor</p>
+                                <p class="count-text">Signed up doctor</p>
                             </div>
 
                             <div class="counter col_third icon-box iconbox-theme-colored">
@@ -669,11 +696,11 @@
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h5 class="text-uppercase mt-0">Project Timeline</h5>
+                        <h5 class="text-uppercase mt-0">Project Plan</h5>
                         <div class="title-icon">
                             <img class="mb-10" src="images/title-icon.png" alt="">
                         </div>
-                        <p>Project Timeline 2018/19 to 2024<br> </p>
+                        <p>Project Plan 2018/19 to 2024<br> </p>
                     </div>
                 </div>
             </div>
@@ -857,11 +884,11 @@
                 <div class="section-title text-center">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h2 class="text-uppercase mt-0">sponsors</h2>
+                            <h2 class="text-uppercase mt-0">Sponsors</h2>
                             <div class="title-icon">
                                 <img class="mb-10" src="images/title-icon.png" alt="">
                             </div>
-                            <p>The AROM Egypt Registry thanks the following founding sponsors of the AROM registry</p>
+                            <p>The AROM Egypt Registry thanks the following founding sponsors</p>
                         </div>
                     </div>
                 </div>

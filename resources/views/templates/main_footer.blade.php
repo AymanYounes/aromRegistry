@@ -8,7 +8,7 @@
                     <div class="footer-box icon-box media">
                         <a href="javascript:void(0)" class="media-left pull-left mr-30 mr-sm-15"><i class=" fa fa-fort-awesome text-white"></i></a>
                         <div class="media-body">
-                            <h4 class="media-heading heading title">specific criteria</h4>
+                            <h4 class="media-heading heading title">Specific criteria</h4>
                             <p>More specific criteria in scientific study.
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                 <div class="footer-widget pt-70 pl-60 pr-60 pt-sm-10 pl-sm-10 pr-sm-10 maxwidth400 sm-text-center">
                     <div class="footer-logo border-bottom-dot-1px pb-30">
                         <img class="mb-20" src="images/logo-0-tall.png" alt="" width="100px">
-                        <p>This registries aim to create the first Mixed cohort study, retrospective and prospective cohort of patients with different rheumatic disorders from different governorates representing all of the Egyptian populations.</p>
+                        <p>These registries aim to create the first Mixed cohort study, retrospective and prospective cohort of patients with different rheumatic disorders from different governorates representing all the Egyptian populations.</p>
                     </div>
                     <div class="footer-news-letter mt-30">
                         <h4 class="text-white mb-30">Subscribe Our Newsletter</h4>
@@ -108,7 +108,7 @@
         <div class="container pt-20 pb-0">
             <div class="row">
                 <div class="col-md-12">
-                    <p class="font-11 pull-left mb-sm-15 sm-text-center sm-pull-none">Copyright &copy;2019 Arom Egypt Registry. All Rights Reserved</p>
+                    <p class="font-11 pull-left mb-sm-15 sm-text-center sm-pull-none">Copyright &copy;2019 AROM Egypt Registry. All Rights Reserved</p>
 
                 </div>
             </div>
