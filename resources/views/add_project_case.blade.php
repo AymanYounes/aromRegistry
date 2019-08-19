@@ -234,7 +234,7 @@
                                     </div>
                                 </div>
 
-                                @if($project->id != 4 || $project->id != 5)
+                                @if($project->id == 4 || $project->id == 5)
                                     <div class="form-group">
                                         <div class="row">
 
