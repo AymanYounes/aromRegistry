@@ -153,6 +153,9 @@ class CasesController extends Controller
         if(isset($request->bmi)) {
             $patient->bmi = $request->bmi;
         }
+        $patient->marital = $request->marital;
+        $patient->phone = $request->phone;
+        $patient->email = $request->email;
         $patient->smoking = $request->smoking;
         $patient->family_history = $request->family_history;
         $patient->informed_consent = $request->informed_consent;

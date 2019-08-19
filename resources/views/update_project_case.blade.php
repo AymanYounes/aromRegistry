@@ -155,6 +155,45 @@
                                 </div>
 
 
+
+                                <div class="form-group">
+                                    <div class="row">
+
+                                        <div class="col-sm-2 d-flex align-items-center">
+                                            <label for="marital">Marital Status</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <label class="radio">
+                                                <input type="radio" value="single" name="marital" {{($case->patient->marital == 'single')?'checked':''}}>
+                                                <span></span>
+                                                <div class="d-inline">Single</div>
+                                            </label>
+
+                                            <label class="radio">
+                                                <input type="radio" value="married" name="marital" {{($case->patient->marital == 'married')?'checked':''}}>
+                                                <span></span>
+                                                <div class="d-inline">Married</div>
+                                            </label>
+
+                                            <label class="radio">
+                                                <input type="radio" value="widow" name="marital" {{($case->patient->marital == 'widow')?'checked':''}}>
+                                                <span></span>
+                                                <div class="d-inline">Widow</div>
+                                            </label>
+
+                                            <label class="radio">
+                                                <input type="radio" value="divorced" name="marital" {{($case->patient->marital == 'divorced')?'checked':''}}>
+                                                <span></span>
+                                                <div class="d-inline">Divorced</div>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-2 d-flex align-items-center">
@@ -180,6 +219,31 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-2 d-flex align-items-center">
+                                            <label for="phone">Phone Number</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="phone" id="phone" value="{{($case->patient->phone)?$case->patient->phone:''}}"  placeholder="Phone Number">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-2 d-flex align-items-center">
+                                            <label for="email">Email Address</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" name="email" id="email" value="{{($case->patient->email)?$case->patient->email:''}}"  placeholder="Email Address">
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group">
                                     <div class="row">
