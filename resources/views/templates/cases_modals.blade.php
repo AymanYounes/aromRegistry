@@ -111,17 +111,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        @if($view_case->patient->height)
-                        <div class="col-sm-6">
-                            <strong> Height:</strong> {{$view_case->patient->height}} CM
-                        </div>
-                        @endif
+                        <div class="col-sm-12 p-0 ">
+                            @if($view_case->patient->height)
+                                <div class="col-sm-6">
+                                    <strong> Height:</strong> {{$view_case->patient->height}} CM
+                                </div>
+                            @endif
 
-                        @if($view_case->patient->weight)
-                        <div class="col-sm-6">
-                            <strong> Weight:</strong> {{$view_case->patient->weight}} KG
+                            @if($view_case->patient->weight)
+                                <div class="col-sm-6">
+                                    <strong> Weight:</strong> {{$view_case->patient->weight}} KG
+                                </div>
+                            @endif
                         </div>
-                        @endif
+
 
                         @if($view_case->patient->weight && $view_case->patient->height)
                         <div class="col-sm-12">
@@ -166,12 +169,11 @@
                 @foreach($view_case->project->sections as $section)
 
                     @if($section->name_short != 'History')
-                        <div class="report-content">
+                    <div class="report-content">
                         <div class="row">
                             <h4 class="text-theme-colored widget-title line-bottom">{{$section->name}}</h4>
                         </div>
                         <div class="table-responsive">
-                            <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -184,21 +186,32 @@
                                     <tbody>
                                     @php $counter = 0 @endphp
                                     @foreach($section->question as $question)
-                                        @php $q_answer = $question->question_answer($view_case->id,$question->id)->answer @endphp
-                                        <tr>
-                                            <th scope="row">{{$counter++}}</th>
-                                            <td>{{$question->question}}</td>
-                                            <td>
+
+                                        @if(isset($question->question_answer($view_case->id,$question->id)->answer))
+                                            @php $q_answer = $question->question_answer($view_case->id,$question->id)->answer @endphp
+
+                                            <tr>
+                                                <th scope="row">{{$counter++}}</th>
+                                                <td>{{$question->question}}</td>
+                                                <td>
                                                 <Span class="{{($q_answer == 'Yes')?'color-green':(($q_answer == 'No')?'color-red':'')}}">
                                                     {{$q_answer}}
                                                 </Span>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
 
+                                        @else
+                                            <tr>
+                                                <th scope="row">{{$counter++}}</th>
+                                                <td>{{$question->question}}</td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
 
                     </div>

@@ -39,18 +39,6 @@ class CasesController extends Controller
         return view('cases' ,compact('cases','case_answers'));
     }
 
-
-    public function getViewCase($id)
-    {
-
-        $cases = Cases::find($id);
-        $modaldata['view'] = view('templates.cases_modals')
-            ->with('view_case', $cases)
-            ->render();
-
-        echo json_encode($modaldata);
-    }
-
     public function getDeleteCase($id)
     {
 
@@ -181,6 +169,7 @@ class CasesController extends Controller
         $case->patient_id = $patient->id;
         $case->user_id = Auth::user()->id;
         $case->project_id = $request->project_id;
+        $case->visit = $request->visit;
 
         $case->save();
 

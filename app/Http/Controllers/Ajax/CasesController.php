@@ -19,4 +19,16 @@ class CasesController extends Controller
         return (new SystemCasesDatatable(new SystemCasesRepository()))->getList($request);
     }
 
+
+    public function getViewCase($id)
+    {
+
+        $cases = Cases::find($id);
+        $modaldata['view'] = view('templates.cases_modals')
+            ->with('view_case', $cases)
+            ->render();
+
+        echo json_encode($modaldata);
+    }
+
 }
