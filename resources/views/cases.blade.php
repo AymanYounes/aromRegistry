@@ -72,9 +72,9 @@
                                         <td>{{$case->user->name}}</td>
                                         <td>{{$case->user->site->name}}</td>
                                         <td>
-                                            <a href="javascript:void(0)" class="btn btn-info btn-sm case_view"  data-toggle="modal" data-target="#case_view_modal" data-id="{{$case->id}}"><i class="fa fa-eye"></i></a>
-                                            <a href="{{url('/update-case/'.$case->id)}}" class="btn btn-dark btn-sm case_edit" ><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-danger btn-sm case_delete" data-id="{{$case->id}}"><i class="fa fa-times"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-info btn-sm case_view" title="view case"  data-toggle="modal" data-target="#case_view_modal" data-id="{{$case->id}}"><i class="fa fa-eye"></i></a>
+                                            <a href="{{url('/update-case/'.$case->id)}}" title="edit case" class="btn btn-dark btn-sm case_edit" ><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-sm case_delete" title="delete case" data-id="{{$case->id}}"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
