@@ -62,6 +62,12 @@
                         </span>
                     @enderror
 
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
 
                     <div class="form-group row mb-0">
                         <div class="w-100">
