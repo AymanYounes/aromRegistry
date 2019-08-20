@@ -474,7 +474,7 @@
                 minYear: 1950,
                 startDate: start,
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'DD/MM/YYYY'
                 },
             });
         });
@@ -491,7 +491,7 @@
                 minYear: 1901,
                 startDate: start,
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'DD/MM/YYYY'
                 },
             });
         });
