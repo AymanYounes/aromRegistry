@@ -12,6 +12,8 @@ use App\Models\Questionnaire_residency;
 use App\Models\Questionnaire_section;
 use App\Models\User;
 use App\Models\User_site;
+use Carbon\Carbon;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -138,7 +140,12 @@ class CasesController extends Controller
         }else{
             return [ 'status' => "false", 'message' => 'name', 'case_id'=>''];
         }
-        $patient->birthday = $request->birthday;
+
+
+        $birthday = Carbon::createFromFormat('d/m/Y', $request->visit);
+
+        $patient->birthday = $birthday->format('Y-m-d');
+//dd($request->all());
         $patient->gender = $request->gender;
         $patient->residency = $request->residency;
         if(isset($request->occupation)) {
@@ -172,7 +179,10 @@ class CasesController extends Controller
         $case->patient_id = $patient->id;
         $case->user_id = Auth::user()->id;
         $case->project_id = $request->project_id;
-        $case->visit = $request->visit;
+
+        $visit = Carbon::createFromFormat('d/m/Y', $request->visit);
+
+        $case->visit = $visit->format('Y-m-d');
 
         $case->save();
 

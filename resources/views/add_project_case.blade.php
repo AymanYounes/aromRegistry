@@ -357,7 +357,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12 d-flex align-items-center">
-                                                        <h2 {{}}>{{$question->sub_sections->name}}</h2>
+                                                        <h2>{{$question->sub_sections->name}}</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -463,7 +463,7 @@
                 showDropdowns: true,
                 minYear: 1950,
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'DD/MM/YYYY'
                 },
             });
         });
@@ -474,7 +474,7 @@
                 minYear: 1901,
                 startDate: moment().subtract(20,'years'),
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'DD/MM/YYYY'
                 },
             });
         });

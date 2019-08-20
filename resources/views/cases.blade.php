@@ -18,8 +18,6 @@
 
 
 
-
-
     <!-- Start main-content -->
     <div class="main-content" id="cases_conent">
         <section>
@@ -67,7 +65,7 @@
                                         <td>{{$counter}}</td>
                                         <td>{{$case->id}}</td>
                                         <td><a href="javascript:void(0)">{{$case->project->name}}</a></td>
-                                        <td>{{$case->visit}}</td>
+                                        <td>{{($case->visit)?$case->visit:''}}</td>
                                         <td>{{$case->patient->name}}</td>
                                         <td>{{$case->user->name}}</td>
                                         <td>{{$case->user->site->name}}</td>
@@ -120,8 +118,7 @@
         $(document).ready( function () {
             $('#myTable').DataTable();
 
-
-            $('.case_view').on('click',function () {
+            $(document).on("click",".case_view",function() {
                 var id = $(this).data('id');
 
                 $.ajax({
@@ -142,7 +139,8 @@
 
             });
 
-            $('.case_delete').on('click',function () {
+
+            $(document).on("click",".case_delete",function() {
                 var id = $(this).data('id');
                 var delete_case = confirm("Are you sure that you want to delete this case?");
                 if (delete_case) {

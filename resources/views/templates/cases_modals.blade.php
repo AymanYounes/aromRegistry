@@ -73,6 +73,18 @@
                             </div>
                             @endif
 
+                            @if($view_case->patient->email)
+                                <div class="col-sm-12">
+                                    <strong> Email:</strong> {{$view_case->patient->email}}
+                                </div>
+                            @endif
+
+                            @if($view_case->patient->phone)
+                                <div class="col-sm-12">
+                                    <strong> Phone:</strong> {{$view_case->patient->phone}}
+                                </div>
+                            @endif
+
                             @if($view_case->patient->birthday)
                             <div class="col-sm-6">
                                 <strong> Birthdate:</strong> {{$view_case->patient->birthday}}
@@ -89,15 +101,21 @@
                             </div>
                             @endif
 
+                            @if($view_case->patient->marital)
+                                <div class="col-sm-12">
+                                    <strong> Marital:</strong> {{$view_case->patient->marital}}
+                                </div>
+                            @endif
+
                             @if($view_case->patient->occupation)
                             <div class="col-sm-12">
                                 <strong> Occupation:</strong> {{$view_case->patient->occupation}}
                             </div>
                             @endif
 
-                            @if($view_case->patient->residency)
+                            @if($view_case->patient->patient_residency)
                             <div class="col-sm-12">
-                                <strong> Residency:</strong> {{$view_case->patient->residency}}
+                                <strong> Residency:</strong> {{$view_case->patient->patient_residency->name}}
                             </div>
                             @endif
 
