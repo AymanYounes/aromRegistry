@@ -975,8 +975,13 @@ label.toggle input[type="checkbox"]:checked + span::after {
     margin-bottom: 15px;
   }
   #modal-container .modal-background .modal p, .project_modal .modal-background .modal p{
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 16px;
+    /*line-height: 22px;*/
+      padding-bottom: 10px;
+  }
+  .project_modal .modal-background .modal ul li{
+      font-size: 16px;
+      padding-bottom: 10px;
   }
   #modal-container .modal-background .modal .modal-svg, .project_modal .modal-background .modal .modal-svg{
     position: absolute;

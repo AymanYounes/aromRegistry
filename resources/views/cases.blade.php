@@ -133,8 +133,10 @@
 
                         $("#case_view_modal").html(result.view);
                     },
-                    error: function (result) {
-                        //
+                    error: function (xhr, status, message) {
+                        console.log('xhr '.xhr);
+                        console.log('status '.status);
+                        console.log('message '.message);
                     }
                 });
 

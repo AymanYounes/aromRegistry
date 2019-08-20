@@ -19,7 +19,9 @@
                                         <li class=""><a href="#managers{{$project->id}}" data-toggle="tab" aria-expanded="false">Project Managers</a></li>
                                         <li class="active"><a href="#objectives{{$project->id}}" data-toggle="tab" aria-expanded="true">Objectives</a></li>
                                         <li class=""><a href="#study{{$project->id}}" data-toggle="tab" aria-expanded="false">Study design</a></li>
+                                        @if($project->outcome_variables)
                                         <li class=""><a href="#variables{{$project->id}}" data-toggle="tab" aria-expanded="false">Outcome variables</a></li>
+                                        @endif
                                         <li class=""><a href="#analysis{{$project->id}}" data-toggle="tab" aria-expanded="false">Analysis plan</a></li>
 
                                     </ul>
@@ -34,14 +36,14 @@
                                                 <div class="section-content">
 
                                                     @foreach($project->managers as $manager)
-                                                        <div class="col-xs-12 col-sm-4 col-md-4">
+                                                        <div class="col-xs-12 col-sm-4 col-md-3">
                                                             <div class="image-box-thum">
                                                                 <img src="{{$manager->image}}" alt="{{$manager->name}}">
                                                             </div>
                                                             <div class="image-box-details text-center p-10 mt-10 bg-lighter ">
                                                                 <h5 class="title mt-0">{{$manager->name}}</h5>
                                                                 <p class="desc mb-20">{{$manager->work_place}}</p>
-                                                                <a href="{{url('doctor-details/'.$manager->id)}}" class="btn btn-colored btn-theme-colored">View profile</a>
+{{--                                                                <a href="{{url('doctor-details/'.$manager->id)}}" class="btn btn-colored btn-theme-colored">View profile</a>--}}
                                                             </div>
                                                         </div>
 
@@ -66,6 +68,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @if($project->outcome_variables)
                                     <div class="tab-pane fade" id="variables{{$project->id}}">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -73,6 +76,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     <div class="tab-pane fade" id="analysis{{$project->id}}">
                                         <div class="row">
                                             <div class="col-md-12">

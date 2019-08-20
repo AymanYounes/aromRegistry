@@ -357,7 +357,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12 d-flex align-items-center">
-                                                        <h2>{{$question->sub_sections->name}}</h2>
+                                                        <h2 {{}}>{{$question->sub_sections->name}}</h2>
                                                     </div>
                                                 </div>
                                             </div>
