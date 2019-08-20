@@ -30,11 +30,7 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
+
 
                 <form id="login_form" class="login100-form validate-form" method="POST" action="{{ route('password.email') }}">
                     @csrf
