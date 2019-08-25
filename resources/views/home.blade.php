@@ -606,11 +606,11 @@
                                 @if(($projects_count/2)+1 > $project->id)
                                     <div class="panel">
                                         <div class="panel-title">
-                                            <a href="#{{'accordion'.$project->id}}" data-toggle="collapse" data-parent="#accordion2">
+                                            <a href="#{{'accordion_'.$project->id}}" data-toggle="collapse" data-parent="#accordion2">
                                                 <span class="open-sub"></span> {{$project->name}}
                                             </a>
                                         </div>
-                                        <div class="panel-collapse collapse" id="{{'accordion'.$project->id}}">
+                                        <div class="panel-collapse collapse" id="{{'accordion_'.$project->id}}">
                                             <div class="panel-content pb-50">
                                                 <h6>{{$project->name_full}}</h6>
                                                 <p>{{$project->short_desc}}</p>
@@ -795,7 +795,7 @@
                                                 <li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>
                                             </ul>
-                                            <a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>
+                                            {{--<a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -811,7 +811,7 @@
                                                 <li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>
                                             </ul>
-                                            <a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>
+                                            {{--<a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -827,7 +827,7 @@
                                                 <li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>
                                             </ul>
-                                            <a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>
+                                            {{--<a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -843,7 +843,7 @@
                                                 {{--<li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>--}}
                                                 {{--<li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>--}}
                                             </ul>
-                                            <a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>
+                                            {{--<a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -859,7 +859,7 @@
                                                 {{--<li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>--}}
                                                 <li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>
                                             </ul>
-                                            <a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>
+                                            {{--<a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -869,10 +869,6 @@
                 </div>
             </div>
         </section>
-
-
-
-        <!--
 
 
 

@@ -900,9 +900,27 @@ label.toggle input[type="checkbox"]:checked + span::after {
 
 
 
+.panel-group .panel-title a{
+    background: #00A3C8;
+    color: #FFF;
+}
 
 
 
+.panel-group .panel-title a::after{
+    color: #FFF;
+}
+
+.panel-group .panel-title a.active{
+
+    background: #00A3C8 none repeat scroll 0 0 !important;
+    color: #FFF;
+}
+
+
+.panel-group .panel-title a.active::after{
+    background: #007995 !important;
+}
 
 
 
