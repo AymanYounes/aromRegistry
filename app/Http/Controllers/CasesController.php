@@ -141,11 +141,21 @@ class CasesController extends Controller
             return [ 'status' => "false", 'message' => 'name', 'case_id'=>''];
         }
 
+        if(isset($request->phone)){
+            $patient->phone = $request->phone;
+        }else{
+            return [ 'status' => "false", 'message' => 'phone', 'case_id'=>''];
+        }
 
-        $birthday = Carbon::createFromFormat('d/m/Y', $request->visit);
 
-        $patient->birthday = $birthday->format('Y-m-d');
-//dd($request->all());
+        if(isset($request->birthday)){
+            $birthday = Carbon::createFromFormat('Y/m/d', $request->birthday);
+            $patient->birthday = $birthday->format('Y-m-d');
+        }else{
+            return [ 'status' => "false", 'message' => 'birthday', 'case_id'=>''];
+        }
+
+
         $patient->gender = $request->gender;
         $patient->residency = $request->residency;
         if(isset($request->occupation)) {
@@ -161,11 +171,12 @@ class CasesController extends Controller
             $patient->bmi = $request->bmi;
         }
         $patient->marital = $request->marital;
-        $patient->phone = $request->phone;
         $patient->email = $request->email;
         $patient->smoking = $request->smoking;
         $patient->family_history = $request->family_history;
         $patient->informed_consent = $request->informed_consent;
+
+
         $patient->save();
 
 
@@ -180,7 +191,7 @@ class CasesController extends Controller
         $case->user_id = Auth::user()->id;
         $case->project_id = $request->project_id;
 
-        $visit = Carbon::createFromFormat('d/m/Y', $request->visit);
+        $visit = Carbon::createFromFormat('Y/m/d', $request->visit);
 
         $case->visit = $visit->format('Y-m-d');
 

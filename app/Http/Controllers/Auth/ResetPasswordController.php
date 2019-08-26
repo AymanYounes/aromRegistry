@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
-    use SendsPasswordResetEmails;
+//    use SendsPasswordResetEmails;
     /**
      * Where to redirect users after resetting their password.
      *

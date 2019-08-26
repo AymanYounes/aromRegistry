@@ -7,6 +7,15 @@
     <!-- CSS | Form steps -->
     <link href="{{asset('css/jquery.steps.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <style>
+
+        .steps ul li a{
+            background: rgba(100,100,100,0.1);
+        }
+        .remove-checked{
+            display: none;
+        }
+    </style>
 @endsection
 
 
@@ -118,7 +127,18 @@
                                             <label for="birthday">Birthday</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="birthday" id="birthday"  placeholder="Birthday">
+                                            <input type="text" class="form-control" name="birthday" id="birthday"  placeholder="Birthday" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-2 d-flex align-items-center">
+                                            <label for="phone">Phone Number</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" name="phone" id="phone"  placeholder="Phone Number" required>
                                         </div>
                                     </div>
                                 </div>
@@ -206,17 +226,6 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="occupation" id="occupation"  placeholder="Occupation">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-2 d-flex align-items-center">
-                                            <label for="phone">Phone Number</label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="number" class="form-control" name="phone" id="phone"  placeholder="Phone Number">
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +392,7 @@
                                                     <div class="col-sm-2 d-flex align-items-center">
                                                         <label for="{{$question_name}}">{{$question->question}}</label>
                                                     </div>
-                                                    <div class="col-sm-10">
+                                                    <div class="answer_wrapper col-sm-10">
                                                         @foreach($question->answers as $answer)
 
                                                             @if($question->type == 1)
@@ -407,6 +416,12 @@
                                                                     <option value="{{strtolower($answer->answer)}}">{{$answer->answer}}</option>
                                                                 @endforeach
                                                             </select>
+                                                        @endif
+
+                                                        @if($question->type == 1)
+                                                            <a href="javascript:void(0)" class="remove-checked text-theme-colored" style="font-size: 20px" title="Remove checked">
+                                                                <i class="fa fa-ban"></i>
+                                                            </a>
                                                         @endif
                                                 </div>
 
@@ -463,7 +478,7 @@
                 showDropdowns: true,
                 minYear: 1950,
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY/MM/DD'
                 },
             });
         });
@@ -474,9 +489,23 @@
                 minYear: 1901,
                 startDate: moment().subtract(20,'years'),
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY/MM/DD'
                 },
             });
+        });
+
+        $(function() {
+            $('input[type="radio"]').on('click',function(){
+                if($(this).is(':checked')) {
+                    $(this).parents('.answer_wrapper').find('.remove-checked').show();
+                }
+            });
+
+            $('.remove-checked').on('click',function(){
+                $(this).parents('.answer_wrapper').find('input[type="radio"]').prop('checked', false);
+                $(this).hide();
+            });
+
         });
     </script>
 
@@ -492,6 +521,7 @@
             bodyTag: "step_conent",
             transitionEffect: "slideLeft",
             enableFinishButton: "true",
+            enableAllSteps: true,
             onStepChanging: function (event, currentIndex, newIndex)
             {
                 // Allways allow previous action even if the current form is not valid!
@@ -526,8 +556,16 @@
                                  if(result.message == 'name'){
                                      $('input[name=patient_name]').addClass('error');
                                      ajax_response = false;
+                                 }else if(result.message == 'birthday'){
+                                     $('input[name=birthday]').addClass('error');
+                                     ajax_response = false;
+                                 }else if(result.message == 'phone'){
+                                     $('input[name=phone]').addClass('error');
+                                     ajax_response = false;
                                  }else{
                                      $('input[name=patient_name]').removeClass('error');
+                                     $('input[name=birthday]').removeClass('error');
+                                     $('input[name=phone]').removeClass('error');
                                      ajax_response = true;
                                  }
                              }
@@ -567,7 +605,7 @@
             },
             onFinished: function (event, currentIndex)
             {
-                alert("Submitted!");
+//                alert("Submitted!");
             }
         }).validate({
             errorPlacement: function errorPlacement(error, element) { element.before(error); },

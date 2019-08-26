@@ -13,6 +13,9 @@
         .steps ul li a{
             background: rgba(100,100,100,0.1);
         }
+        .remove-checked{
+            display: none;
+        }
     </style>
 @endsection
 
@@ -133,6 +136,18 @@
 
                                 <div class="form-group">
                                     <div class="row">
+                                        <div class="col-sm-2 d-flex align-items-center">
+                                            <label for="phone">Phone Number</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" name="phone" id="phone" value="{{($case->patient->phone)?$case->patient->phone:''}}"  placeholder="Phone Number">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
 
                                         <div class="col-sm-2 d-flex align-items-center">
                                             <label for="gender">Gender</label>
@@ -191,9 +206,6 @@
                                     </div>
                                 </div>
 
-
-
-
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-2 d-flex align-items-center">
@@ -216,18 +228,6 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" value="{{($case->patient->occupation)?$case->patient->occupation:''}}" name="occupation" id="occupation"  placeholder="Occupation">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-2 d-flex align-items-center">
-                                            <label for="phone">Phone Number</label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="number" class="form-control" name="phone" id="phone" value="{{($case->patient->phone)?$case->patient->phone:''}}"  placeholder="Phone Number">
                                         </div>
                                     </div>
                                 </div>
@@ -414,6 +414,12 @@
                                                                 @endforeach
                                                             </select>
                                                         @endif
+
+                                                            @if($question->type == 1)
+                                                                <a href="javascript:void(0)" class="remove-checked text-theme-colored" style="font-size: 20px" title="Remove checked">
+                                                                    <i class="fa fa-ban"></i>
+                                                                </a>
+                                                            @endif
                                                         
                                                 </div>
 
@@ -474,7 +480,7 @@
                 minYear: 1950,
                 startDate: start,
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY/MM/DD'
                 },
             });
         });
@@ -491,9 +497,23 @@
                 minYear: 1901,
                 startDate: start,
                 locale: {
-                    format: 'DD/MM/YYYY'
+                    format: 'YYYY/MM/DD'
                 },
             });
+        });
+
+        $(function() {
+            $('input[type="radio"]').on('click',function(){
+                if($(this).is(':checked')) {
+                    $(this).parents('.answer_wrapper').find('.remove-checked').show();
+                }
+            });
+
+            $('.remove-checked').on('click',function(){
+                $(this).parents('.answer_wrapper').find('input[type="radio"]').prop('checked', false);
+                $(this).hide();
+            });
+
         });
     </script>
 
@@ -544,8 +564,16 @@
                                  if(result.message == 'name'){
                                      $('input[name=patient_name]').addClass('error');
                                      ajax_response = false;
+                                 }else if(result.message == 'birthday'){
+                                     $('input[name=birthday]').addClass('error');
+                                     ajax_response = false;
+                                 }else if(result.message == 'phone'){
+                                     $('input[name=phone]').addClass('error');
+                                     ajax_response = false;
                                  }else{
                                      $('input[name=patient_name]').removeClass('error');
+                                     $('input[name=birthday]').removeClass('error');
+                                     $('input[name=phone]').removeClass('error');
                                      ajax_response = true;
                                  }
                              }
