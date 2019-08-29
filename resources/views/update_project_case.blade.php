@@ -347,22 +347,87 @@
 
                             </step_conent>
 
+                            @php $last_sub = 0 @endphp
+                            @php $last_equation_name = ''; @endphp
+                            @php $options = []; @endphp
+
                             @foreach($case->project->sections as $section)
                                 @if($section->name_short != 'History' || $section->name != 'Personal History')
                                 <h3>{{$section->name_short}}</h3>
                                 <step_conent>
                                     <h2 class="text-theme-colored widget-title line-bottom">{{$section->name}}</h2>
                                     @foreach($section->question as $question)
-                                        @php $question_name = strtolower($question->question).'__'.$question->id; @endphp
-                                        <!-- Text Box -->
-                                        @if($question->type == 0)
+                                        @php
+                                            $question_name = strtolower($question->question).'__'.$question->id;
+                                        @endphp
+                                        @php $last_equation_status = ''; @endphp
+
+                                        @if((isset($question->sub_section_id) && $question->sub_section_id != 0 ) && $question->sub_section_id != $last_sub)
+                                            @php $last_sub = $question->sub_section_id; @endphp
                                             <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12 d-flex align-items-center">
+                                                        <h2>{{$question->sub_sections->name}}</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        @endif
+
+
+                                        <div class="question_row">
+
+                                            <!-- Text Box -->
+                                            @if($question->type == 0 || $question->type == 5)
+                                                @php $checked = ''; @endphp
+
+                                                @if($question->options)
+                                                    @php
+                                                        $options = explode('|', $question->options);
+                                                        $equation_name = $options[0];
+                                                        $equation_status = $options[1];
+                                                        if(
+                                                        ($last_equation_name != $equation_name
+                                                        && $equation_status != 'e_result')
+                                                        && $last_equation_status != $equation_status){
+                                                            $last_equation_name = $equation_name;
+                                                            $last_equation_status = $equation_status;
+                                                            $checked = 'checked';
+                                                            $appear = '';
+                                                        }
+                                                    @endphp
+
+                                                    @if(in_array('hide',$options))
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-sm-2 d-flex align-items-center">
+                                                                </div>
+                                                                <div class="answer_wrapper col-sm-10">
+                                                                    <label class="radio">
+                                                                        <input type="radio" class="hide_option" value="{{strtolower($equation_name)}}" name="{{$equation_name}}" {{($checked)?$checked:$checked = ''}}>
+                                                                        <span></span>
+                                                                        <div class="d-inline">{{$question->question}}</div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endif
+
+                                            <div class="form-group group_row {{($question->options && in_array('hide',$options) && !$checked)?'hide':''}}">
                                                 <div class="row">
                                                     <div class="col-sm-2 d-flex align-items-center">
                                                         <label for="{{$question_name}}">{{$question->question}}</label>
                                                     </div>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" value="{{($question->question_answer($case->id,$question->id) && $question->question_answer($case->id,$question->id)->answer )?$question->question_answer($case->id,$question->id)->answer:''}}" name="{{$question_name}}" id="{{$question_name}}"  placeholder="{{($question->place_holder)?$question->place_holder:$question->question}}">
+                                                        <input type="{{($question->type == 5)?'number':'text'}}"
+                                                               {{($question->options && in_array('e_result',$options))?$equation_status .' disabled':''}}
+                                                               class="form-control {{($question->helper_class)?$question->helper_class:''}} {{($question->equation)?'calc_'.$question->equation:''}}"
+                                                               name="{{$question_name}}"
+                                                               id="{{$question_name}}"
+                                                               value="{{($question->question_answer($case->id,$question->id) && $question->question_answer($case->id,$question->id)->answer )?$question->question_answer($case->id,$question->id)->answer:''}}"
+                                                               placeholder="{{($question->place_holder)?$question->place_holder:$question->question}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -432,7 +497,7 @@
                                         @elseif($question->type == 3)
 
                                         @endif
-
+                                        </div>
 
 
                                     @endforeach
@@ -514,22 +579,107 @@
                 $(this).hide();
             });
 
+
+            $('.hide_option').on('click',function(){
+                $('.hide_option').parents('.question_row').find('.group_row').addClass('hide');
+                $('.hide_option').parents('.question_row').find('input[type="text"]').val('');
+                $('.hide_option').parents('.question_row').find('input[type="number"]').val('');
+                $('.das').val('');
+                if($(this).is(':checked')) {
+                    $(this).parents('.question_row').find('.group_row').removeClass('hide');
+                }
+            });
+
+
+
+
+
+            /*
+             calculate DAS
+             */
+
+
+            $(".tjc").attr({ "max" : 28, "min" : 0 });
+            $(".sjc").attr({ "max" : 28, "min" : 0 });
+            $(".pga").attr({ "max" : 28, "min" : 0 });
+            $(".crp_mg_l").attr({ "max" : 28, "min" : 0 });
+            $(".crp_mg_dl").attr({ "max" : 28, "min" : 0 });
+
+            $(document).on('change','.calc_das-28',function(){
+
+                var result = '';
+                var tjc = $('.tjc').val();
+                var sjc = $('.sjc').val();
+                var pga = $('.pga').val();
+                var esr = $('.esr').val();
+                var crp_mg_l = $('.crp_mg_l').val();
+                var crp_mg_dl = $('.crp_mg_dl').val();
+
+                if(tjc != '' && sjc != '' && pga != ''){
+                    if(esr != ''){
+                        result = (0.56 * Math.sqrt(tjc))
+                            + ( 0.28 * Math.sqrt(sjc))
+                            + ( 0.7 * Math.log(esr))
+                            + ( 0.14 * pga);
+                        $('.das').val(Number.parseFloat(result).toFixed(2));
+                    }
+
+                    if(crp_mg_l != ''){
+                        result = (0.56 * Math.sqrt(tjc))
+                            + ( 0.28 * Math.sqrt(sjc))
+                            + ( 0.36 * (Math.log(crp_mg_l+1)))
+                            + ( 0.14 * pga) + 0.96;
+                        $('.das').val(Number.parseFloat(result).toFixed(2));
+                    }
+
+                    if(crp_mg_dl != ''){
+                        result = (0.56 * Math.sqrt(tjc))
+                            + ( 0.28 * Math.sqrt(sjc))
+                            + ( 0.36 * (Math.log(10 * crp_mg_dl+1)))
+                            + ( 0.14 * pga) + 0.96;
+                        $('.das').val(Number.parseFloat(result).toFixed(2));
+                    }
+
+                }
+
+            });
+
+
+
+
         });
-    </script>
 
 
 
 
 
-    <script>
+
+
+
+
+        var url = window.location.href;
+        var url_arr = url.split('/');
+        var update_step = 0;
+        findItem('update-case');
+
+        function findItem (term) {
+            for (var i=0;i<url_arr.length;i++) {
+                if(url_arr[i] == term){
+                    update_step = 2;
+                }
+            }
+        }
+
         var form = $("#add_case_form").show();
 
         form.steps({
             headerTag: "h3",
             bodyTag: "step_conent",
-            transitionEffect: "slideLeft",
+            transitionEffect: "slide",
             enableFinishButton: "true",
             enableAllSteps: true,
+            preloadContent: true,
+            startIndex: update_step,
             onStepChanging: function (event, currentIndex, newIndex)
             {
                 // Allways allow previous action even if the current form is not valid!
@@ -613,7 +763,7 @@
             },
             onFinished: function (event, currentIndex)
             {
-                alert("Changes has been saved!");
+                window.location.replace($("#RootURL").val()+"/cases");
             }
         });
 

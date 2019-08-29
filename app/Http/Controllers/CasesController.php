@@ -85,12 +85,11 @@ class CasesController extends Controller
 
         $return_array =[];
         $question_type = Questionnaire::find($question_id);
-        if(isset($question_type) &&$question_type-> type != 0){
+        if(isset($question_type) && $question_type-> type != 0 && $question_type-> type != 5){
 
             $answer_value = Answer::where('answer',$answer)
                 ->where('questionnaire_id',$question_id)
                 ->first();
-
 
             $return_array['answer_id'] = $answer_value->id;
             if($answer != null){
@@ -207,7 +206,6 @@ class CasesController extends Controller
             $answer_search = Case_answer::where('case_id' , $case->id)
                 ->where('questionnaire_id' , $key)
                 ->first();
-            $question_answer_values = $this->insertCaseAnswersQuestionAndAnswerFields($key, $answer);
 
             //Update case
             if($answer_search){
@@ -218,6 +216,7 @@ class CasesController extends Controller
                 $insert_answer->case_id = $case->id;
                 $insert_answer->questionnaire_id = $key;
             }
+            $question_answer_values = $this->insertCaseAnswersQuestionAndAnswerFields($key, $answer);
 
             $insert_answer->answer_id = $question_answer_values['answer_id'];
             $insert_answer->answer = $question_answer_values['answer_value'];

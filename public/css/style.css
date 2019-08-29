@@ -576,6 +576,32 @@ add_case - steps wizard
 
 
 
+
+@media only screen and (max-width: 700px) {
+
+    #add_case_form .actions,#add_case_form .actions ul{
+        width: 100%;
+        padding: 0;
+    }
+    #add_case_form .actions ul li{
+        width: 50%;
+        margin: 0;
+        text-align: center;
+    }
+
+
+    .wizard > .steps > ul > li{
+        width: 33%;
+    }
+    .wizard > .steps a, .wizard > .steps a:hover, .wizard > .steps a:active{
+        margin:5px;
+        padding: 10px 5px ;
+    }
+    .wizard > .steps a .number{
+        font-size: 12px;
+    }
+}
+
 /*
 ========================
 add_case - UI Components
