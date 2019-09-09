@@ -595,25 +595,25 @@
 
 
             /*
-             calculate DAS
+             calculate DAS-28
              */
 
 
-            $(".tjc").attr({ "max" : 28, "min" : 0 });
-            $(".sjc").attr({ "max" : 28, "min" : 0 });
-            $(".pga").attr({ "max" : 28, "min" : 0 });
-            $(".crp_mg_l").attr({ "max" : 28, "min" : 0 });
-            $(".crp_mg_dl").attr({ "max" : 28, "min" : 0 });
+            $(".das_tjc").attr({ "max" : 28, "min" : 0 });
+            $(".das_sjc").attr({ "max" : 28, "min" : 0 });
+            $(".das_pga").attr({ "max" : 28, "min" : 0 });
+            $(".das_crp_mg_l").attr({ "max" : 28, "min" : 0 });
+            $(".das_crp_mg_dl").attr({ "max" : 28, "min" : 0 });
 
             $(document).on('change','.calc_das-28',function(){
 
                 var result = '';
-                var tjc = $('.tjc').val();
-                var sjc = $('.sjc').val();
-                var pga = $('.pga').val();
-                var esr = $('.esr').val();
-                var crp_mg_l = $('.crp_mg_l').val();
-                var crp_mg_dl = $('.crp_mg_dl').val();
+                var tjc = $('.das_tjc').val();
+                var sjc = $('.das_sjc').val();
+                var pga = $('.das_pga').val();
+                var esr = $('.das_esr').val();
+                var crp_mg_l = $('.das_crp_mg_l').val();
+                var crp_mg_dl = $('.das_crp_mg_dl').val();
 
                 if(tjc != '' && sjc != '' && pga != ''){
                     if(esr != ''){
@@ -645,6 +645,143 @@
             });
 
 
+
+
+
+            /*
+             calculate ASDAS
+             */
+
+
+            $(".asdas_sp").attr({ "max" : 10, "min" : 0 });
+            $(".asdas_pa").attr({ "max" : 10, "min" : 0 });
+            $(".asdas_dms").attr({ "max" : 10, "min" : 0 });
+            $(".asdas_pga").attr({ "max" : 10, "min" : 0 });
+            $(".asdas_esr_mm_h").attr({ "max" : 28, "min" : 0 });
+            $(".asdas_crp_mg_dl").attr({ "max" : 28, "min" : 0 });
+
+            $(document).on('change','.calc_asdas',function(){
+
+                var result = '';
+                var sp = $('.asdas_sp').val();
+                var pa = $('.asdas_pa').val();
+                var dms = $('.asdas_dms').val();
+                var pga = $('.asdas_pga').val();
+                var esr = $('.asdas_esr_mm_h').val();
+                var crp_mg_dl = $('.asdas_crp_mg_dl').val();
+
+                if(sp != '' && pa != '' && dms != ''&& pga != ''){
+                    if(esr != ''){
+                        result = (0.079 * sp)
+                            + ( 0.069 * dms)
+                            + ( 0.113 * pga)
+                            + ( 0.086 * pa)
+                            + ( 0.293 * Math.sqrt(esr));
+                        $('.asdas').val(Number.parseFloat(result).toFixed(2));
+                    }
+
+                    if(crp_mg_dl != ''){
+                        result = (0.121 * sp)
+                            + ( 0.058 * dms)
+                            + ( 0.11 * pga)
+                            + ( 0.073 * pa)
+                            + ( 0.579 * Math.log(crp_mg_dl + 1));
+                        $('.asdas').val(Number.parseFloat(result).toFixed(2));
+                    }
+
+                }
+
+            });
+
+
+
+
+
+
+
+
+
+            /*
+             calculate DAPSA
+             */
+
+
+            $(".dapsa_sjc").attr({ "max" : 66, "min" : 0 });
+            $(".dapsa_tjc").attr({ "max" : 68, "min" : 0 });
+            $(".dapsa_pp").attr({ "max" : 10, "min" : 0 });
+            $(".dapsa_ptga").attr({ "max" : 10, "min" : 0 });
+//            $(".dapsa_crp").attr({ "max" : 28, "min" : 0 });
+
+            $(document).on('change','.calc_dapsa',function(){
+
+                var result = '';
+                var sjc = $('.dapsa_sjc').val();
+                var tjc = $('.dapsa_tjc').val();
+                var pp = $('.dapsa_pp').val();
+                var ptga = $('.dapsa_ptga').val();
+                var crp = $('.dapsa_crp').val();
+
+                if(sjc != '' && tjc != '' && pp != ''&& ptga != ''){
+//                    alert('sjx : ' + sjc + ' - tjc :'+ tjc + ' - pp : ' + pp + ' - ptga : ' + ptga + ' - crp : ' + crp);
+                    if(crp != ''){
+                        result = Number.parseFloat(sjc)
+                                + Number.parseFloat(tjc)
+                                + Number.parseFloat(pp)
+                                + Number.parseFloat(ptga)
+                                + Number.parseFloat(crp);
+                        $('.dapsa').val(Number.parseFloat(result).toFixed(2));
+                    }
+                }
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+            /*
+             calculate BASDAI
+             */
+
+
+            $(".basdai_fat").attr({ "max" : 66, "min" : 0 });
+            $(".basdai_sp").attr({ "max" : 68, "min" : 0 });
+            $(".basdai_pa").attr({ "max" : 10, "min" : 0 });
+            $(".basdai_enth").attr({ "max" : 10, "min" : 0 });
+            $(".basdai_ims").attr({ "max" : 10, "min" : 0 });
+            $(".basdai_dms").attr({ "max" : 10, "min" : 0 });
+//            $(".dapsa_crp").attr({ "max" : 28, "min" : 0 });
+
+            $(document).on('change','.calc_basdai',function(){
+
+                var result = '';
+                var fat = $('.basdai_fat').val();
+                var sp = $('.basdai_sp').val();
+                var pa = $('.basdai_pa').val();
+                var enth = $('.basdai_enth').val();
+                var ims = $('.basdai_ims').val();
+                var dms = $('.basdai_dms').val();
+
+                if(fat != '' && sp != '' && pa != ''&& enth != '' && ims != '' && dms != ''){
+//                    alert('fat : ' + fat + ' - sp :'+ sp + ' - pa : ' + pa + ' - enth : ' + enth + ' - ims : ' + ims + ' - dms : ' + dms);
+
+                        result = 0.2
+                            * (Number.parseFloat(fat)
+                            + Number.parseFloat(sp)
+                            + Number.parseFloat(pa)
+                            + Number.parseFloat(enth)
+                            + 0.5 * (Number.parseFloat(ims) + Number.parseFloat(dms))
+                            );
+                        $('.basdai').val(Number.parseFloat(result).toFixed(2));
+                }
+
+            });
 
 
         });

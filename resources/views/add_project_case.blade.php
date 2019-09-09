@@ -659,7 +659,7 @@
             bodyTag: "step_conent",
             transitionEffect: "slide",
             enableFinishButton: "true",
-            enableAllSteps: true,
+//            enableAllSteps: true,
             preloadContent: true,
             startIndex: update_step,
             onStepChanging: function (event, currentIndex, newIndex)
