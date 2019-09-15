@@ -815,22 +815,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="team border-1px sm-text-center maxwidth400">
-                                        <div class="thumb"><img class="img-fullwidth" src="images/dr-ahmed.jpg" alt=""></div>
-                                        <div class="content p-15 bg-white-light w-100">
-                                            <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="{{url('doctor-details')}}">Dr. Ahmed Roshdy</a></h4>
-                                            <h6 class="title mt-0">Team Member</h6>
+                                {{--<div class="item">--}}
+                                    {{--<div class="team border-1px sm-text-center maxwidth400">--}}
+                                        {{--<div class="thumb"><img class="img-fullwidth" src="images/dr-ahmed.jpg" alt=""></div>--}}
+                                        {{--<div class="content p-15 bg-white-light w-100">--}}
+                                            {{--<h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="{{url('doctor-details')}}">Dr. Ahmed Roshdy</a></h4>--}}
+                                            {{--<h6 class="title mt-0">Team Member</h6>--}}
                                             {{--<p class="mb-30">Lorem ipsum dolor sit amet, con amit sectetur adipisicing elit.</p>--}}
-                                            <ul class="social-icons icon-dark icon-theme-colored icon-sm pull-left flip">
-                                                <li><a target="_blank" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
+                                            {{--<ul class="social-icons icon-dark icon-theme-colored icon-sm pull-left flip">--}}
+                                                {{--<li><a target="_blank" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>--}}
+                                                {{--<li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>--}}
+                                                {{--<li><a target="_blank" href="https://aboutme.google.com"><i class="fa fa-google-plus"></i></a></li>--}}
+                                            {{--</ul>--}}
                                             {{--<a class="btn btn-theme-colored btn-sm pull-right flip" href="{{url('doctor-details')}}">view details</a>--}}
-                                        </div>
-                                    </div>
-                                </div>
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="item">
                                     <div class="team border-1px sm-text-center maxwidth400">
                                         <div class="thumb"><img class="img-fullwidth" src="images/dr-risha.jpg" alt=""></div>
@@ -891,10 +891,10 @@
                 <div class="section-content">
                     <div class="row multi-row-clearfix">
 
-                        <div class="owl-carousel-3col">
+                        <div class="owl-carousel-2col">
                             <div class="item"><img src="images/amgen.png" alt="Amgen"  > </div>
                             <div class="item"><img src="images/novartis.png" alt="Novartis" > </div>
-                            <div class="item"><img src="images/pfizer.png" alt="Pfizer" > </div>
+                            {{--<div class="item"><img src="images/pfizer.png" alt="Pfizer" > </div>--}}
                         </div>
 
                     </div>

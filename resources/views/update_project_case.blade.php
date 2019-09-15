@@ -376,44 +376,44 @@
 
 
                                         <div class="question_row">
+                                            @php $checked = ''; @endphp
 
-                                            <!-- Text Box -->
-                                            @if($question->type == 0 || $question->type == 5)
-                                                @php $checked = ''; @endphp
+                                            @if($question->options)
+                                                @php
+                                                    $options = explode('|', $question->options);
+                                                    $equation_name = $options[0];
+                                                    $equation_status = $options[1];
+                                                    if(
+                                                    ($last_equation_name != $equation_name
+                                                    && $equation_status != 'e_result')
+                                                    && $last_equation_status != $equation_status){
+                                                        $last_equation_name = $equation_name;
+                                                        $last_equation_status = $equation_status;
+                                                        $checked = 'checked';
+                                                        $appear = '';
+                                                    }
+                                                @endphp
 
-                                                @if($question->options)
-                                                    @php
-                                                        $options = explode('|', $question->options);
-                                                        $equation_name = $options[0];
-                                                        $equation_status = $options[1];
-                                                        if(
-                                                        ($last_equation_name != $equation_name
-                                                        && $equation_status != 'e_result')
-                                                        && $last_equation_status != $equation_status){
-                                                            $last_equation_name = $equation_name;
-                                                            $last_equation_status = $equation_status;
-                                                            $checked = 'checked';
-                                                            $appear = '';
-                                                        }
-                                                    @endphp
+                                                @if(in_array('hide',$options))
 
-                                                    @if(in_array('hide',$options))
-
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="col-sm-2 d-flex align-items-center">
-                                                                </div>
-                                                                <div class="answer_wrapper col-sm-10">
-                                                                    <label class="radio">
-                                                                        <input type="radio" class="hide_option" value="{{strtolower($equation_name)}}" name="{{$equation_name}}" {{($checked)?$checked:$checked = ''}}>
-                                                                        <span></span>
-                                                                        <div class="d-inline">{{$question->question}}</div>
-                                                                    </label>
-                                                                </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-2 d-flex align-items-center">
+                                                            </div>
+                                                            <div class="answer_wrapper col-sm-10">
+                                                                <label class="radio">
+                                                                    <input type="radio" class="hide_option" value="{{strtolower($equation_name)}}" name="{{$equation_name}}" {{($checked)?$checked:$checked = ''}}>
+                                                                    <span></span>
+                                                                    <div class="d-inline">{{$question->question}}</div>
+                                                                </label>
                                                             </div>
                                                         </div>
-                                                    @endif
+                                                    </div>
                                                 @endif
+                                            @endif
+                                            <!-- Text Box -->
+                                            @if($question->type == 0 || $question->type == 5)
+
 
                                             <div class="form-group group_row {{($question->options && in_array('hide',$options) && !$checked)?'hide':''}}">
                                                 <div class="row">
@@ -422,7 +422,7 @@
                                                     </div>
                                                     <div class="col-sm-10">
                                                         <input type="{{($question->type == 5)?'number':'text'}}"
-                                                               {{($question->options && in_array('e_result',$options))?$equation_status .' disabled':''}}
+                                                               {{($question->options && in_array('e_result',$options))?$equation_status .' readonly':''}}
                                                                class="form-control {{($question->helper_class)?$question->helper_class:''}} {{($question->equation)?'calc_'.$question->equation:''}}"
                                                                name="{{$question_name}}"
                                                                id="{{$question_name}}"
@@ -441,7 +441,6 @@
                                                     </div>
                                                     <div class="col-sm-10">
                                                         @foreach($question->answers as $answer)
-
                                                             @if($question->type == 1)
                                                             <label class="radio">
                                                                 <input type="radio" value="{{strtolower($answer->answer)}}" name="{{$question_name}}"
@@ -450,9 +449,13 @@
                                                                         && strtolower($question->question_answer($case->id,$question->id)->answer)
                                                                         == strtolower($answer->answer))?
                                                                         'checked':''
-                                                                        }}>
-                                                                <span></span>
-                                                                <div class="d-inline">{{$answer->answer}}</div>
+                                                                        }}
+                                                                        class="{{($question->equation)?'calc_'.$question->equation:''}}"
+                                                                        data-yon="{{($question->options && in_array('yon',$options))?$options[2]:0}}"
+                                                                        data-classHelper="{{($question->helper_class)?$question->helper_class:''}}"
+                                                        >
+                                                        <span></span>
+                                                        <div class="d-inline">{{$answer->answer}}</div>
                                                             </label>
                                                             @elseif($question->type == 2)
                                                                 <label class="checkbox">
@@ -605,7 +608,8 @@
             $(".das_crp_mg_l").attr({ "max" : 28, "min" : 0 });
             $(".das_crp_mg_dl").attr({ "max" : 28, "min" : 0 });
 
-            $(document).on('change','.calc_das-28',function(){
+//            $(document).on('keydown','.calc_das-28',function(){
+            $('.calc_das-28').keyup(function(){
 
                 var result = '';
                 var tjc = $('.das_tjc').val();
@@ -621,23 +625,24 @@
                             + ( 0.28 * Math.sqrt(sjc))
                             + ( 0.7 * Math.log(esr))
                             + ( 0.14 * pga);
-                        $('.das').val(Number.parseFloat(result).toFixed(2));
+                        $('.das_das').val(Number.parseFloat(result).toFixed(2));
+                        console.log($('.das_das').val());
                     }
 
-                    if(crp_mg_l != ''){
-                        result = (0.56 * Math.sqrt(tjc))
-                            + ( 0.28 * Math.sqrt(sjc))
-                            + ( 0.36 * (Math.log(crp_mg_l+1)))
-                            + ( 0.14 * pga) + 0.96;
-                        $('.das').val(Number.parseFloat(result).toFixed(2));
-                    }
+//                    if(crp_mg_l != ''){
+//                        result = (0.56 * Math.sqrt(tjc))
+//                            + ( 0.28 * Math.sqrt(sjc))
+//                            + ( 0.36 * (Math.log(crp_mg_l+1)))
+//                            + ( 0.14 * pga) + 0.96;
+//                        $('.das_das').val(Number.parseFloat(result).toFixed(2));
+//                    }
 
                     if(crp_mg_dl != ''){
                         result = (0.56 * Math.sqrt(tjc))
                             + ( 0.28 * Math.sqrt(sjc))
                             + ( 0.36 * (Math.log(10 * crp_mg_dl+1)))
                             + ( 0.14 * pga) + 0.96;
-                        $('.das').val(Number.parseFloat(result).toFixed(2));
+                        $('.das_das').val(Number.parseFloat(result).toFixed(2));
                     }
 
                 }
@@ -660,7 +665,8 @@
             $(".asdas_esr_mm_h").attr({ "max" : 28, "min" : 0 });
             $(".asdas_crp_mg_dl").attr({ "max" : 28, "min" : 0 });
 
-            $(document).on('change','.calc_asdas',function(){
+//            $(document).on('change','.calc_asdas',function(){
+            $('.calc_asdas').keyup(function(){
 
                 var result = '';
                 var sp = $('.asdas_sp').val();
@@ -712,7 +718,8 @@
             $(".dapsa_ptga").attr({ "max" : 10, "min" : 0 });
 //            $(".dapsa_crp").attr({ "max" : 28, "min" : 0 });
 
-            $(document).on('change','.calc_dapsa',function(){
+//            $(document).on('change','.calc_dapsa',function(){
+                $('.calc_dapsa').keyup(function(){
 
                 var result = '';
                 var sjc = $('.dapsa_sjc').val();
@@ -758,7 +765,8 @@
             $(".basdai_dms").attr({ "max" : 10, "min" : 0 });
 //            $(".dapsa_crp").attr({ "max" : 28, "min" : 0 });
 
-            $(document).on('change','.calc_basdai',function(){
+//            $(document).on('change','.calc_basdai',function(){
+            $('.calc_basdai').keyup(function(){
 
                 var result = '';
                 var fat = $('.basdai_fat').val();
@@ -783,6 +791,47 @@
 
             });
 
+
+
+
+
+            /*
+             calculate SLEDAI
+             */
+
+
+            var sledai_arr = [];
+            $('.calc_sledai').each( function() {
+                if ($(this).is(':radio')) {
+
+                    var radio = $(this)[0];
+                    if (radio.value === 'yes' && radio.checked === true)
+                        sledai_arr.push($(this).attr('data-classHelper'));
+                }
+
+            });
+
+            $(document).on('change','.calc_sledai',function() {
+
+                var sledai_result = Number($('.sledai_sledai').val());
+                if(!$('.sledai_sledai').val()){
+                    sledai_result = Number(0);
+                }
+
+                if($(this).val() == 'yes'){
+                    if(!sledai_arr.includes($(this).attr('data-classHelper'))){
+                        sledai_arr.push($(this).attr('data-classHelper'));
+                        sledai_result += Number($(this).attr('data-yon'));
+                    }
+                }else{
+                    if(sledai_arr.includes($(this).attr('data-classHelper'))) {
+                        sledai_arr.pop($(this).attr('data-classHelper'));
+                        sledai_result -= Number($(this).attr('data-yon'));
+                    }
+                }
+                $('.sledai_sledai').val(Number(sledai_result));
+
+            });
 
         });
 
