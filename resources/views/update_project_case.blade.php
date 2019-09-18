@@ -654,6 +654,51 @@
 
 
             /*
+             calculate SDAI/CDAI
+             */
+
+
+            $(".sdai_tjc").attr({ "max" : 28, "min" : 0 });
+            $(".sdai_sjc").attr({ "max" : 28, "min" : 0 });
+            $(".sdai_pga").attr({ "max" : 28, "min" : 0 });
+            $(".sdai_egda").attr({ "max" : 28, "min" : 0 });
+            $(".sdai_crp_mg_dl").attr({ "max" : 28, "min" : 0 });
+
+//            $(document).on('keydown','.calc_das-28',function(){
+            $('.calc_sdai').keyup(function(){
+
+                var result = '';
+                var tjc = $('.sdai_tjc').val();
+                var sjc = $('.sdai_sjc').val();
+                var pga = $('.sdai_pga').val();
+                var egda = $('.sdai_egda').val();
+                var crp_mg_dl = $('.sdai_crp_mg_dl').val();
+
+                if(tjc != '' && sjc != '' && pga != '' && egda != ''){
+
+                    result = Number.parseFloat(tjc)
+                        + Number.parseFloat(sjc)
+                        + Number.parseFloat(pga)
+                        + Number.parseFloat(egda);
+                        $('.sdai_cdai').val(Number.parseFloat(result).toFixed(2));
+
+                    if(crp_mg_dl != ''){
+                        result = Number.parseFloat(tjc)
+                            + Number.parseFloat(sjc)
+                            + Number.parseFloat(pga)
+                            + Number.parseFloat(egda)
+                            + Number.parseFloat(crp_mg_dl);
+                        $('.sdai_sdai').val(Number.parseFloat(result).toFixed(2));
+                    }
+
+                }
+
+            });
+
+
+
+
+            /*
              calculate ASDAS
              */
 
