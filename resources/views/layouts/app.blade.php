@@ -161,11 +161,13 @@
     && Request::route()->getName() != 'casesAddProjectCase'
     && Request::route()->getName() != 'casesUpdateProjectCase'
     && Request::route()->getName() != 'password.request'
+    && Request::route()->getName() != 'password.reset'
     && !isset($exception))
         @include('templates.main_header')
     @elseif(Request::route()
     && ( Request::route()->getName() == 'login'
     || Request::route()->getName() == 'password.request'
+    || Request::route()->getName() == 'password.reset'
     || Request::route()->getName() == 'register')
     && !isset($exception))
     @else
@@ -187,6 +189,7 @@
     && Request::route()->getName() != 'usersIndex'
     && Request::route()->getName() != 'casesIndex'
     && Request::route()->getName() != 'password.request'
+    && Request::route()->getName() != 'password.reset'
     && !isset($exception))
         @include('templates.main_footer')
     @elseif(Request::route()
@@ -196,6 +199,7 @@
     || Request::route()->getName() == 'casesAddProjectCase'
     || Request::route()->getName() == 'casesUpdateProjectCase'
     || Request::route()->getName() == 'password.request'
+    || Request::route()->getName() == 'password.reset'
     )
     && !isset($exception))
     @else
