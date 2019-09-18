@@ -18,7 +18,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
 
-                <form id="login_form" class="login100-form validate-form" method="POST" action="{{ route('password.update') }}">
+                <form id="signup_form" class="login100-form validate-form" method="POST" action="{{ route('password.update') }}">
                     @csrf
                     <input type="hidden" name="token" value="{{ $token }}">
                     <div class="login-logo-wrapper p-b-20">
