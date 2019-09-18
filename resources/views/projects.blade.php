@@ -2,6 +2,13 @@
 @section('title')Arom Egypt registry | Projects @endsection
 @section('content')
 
+    <style>
+        .projects-grid .card__back ul li {
+            font-size: 11px;
+            line-height: 16px;
+        }
+    </style>
+
     <!-- Start main-content -->
     <div class="main-content">
         <section>
@@ -38,7 +45,7 @@
                                                     <div class="display-table">
                                                         <div class="display-table-cell">
                                                             <h4>{{$project->name_full}}</h4>
-                                                            <p>{{$project->short_desc}}</p>
+                                                            <p>{!! $project->short_desc !!}</p>
                                                             <a href="javascript:void(0)" class="btn btn-default mt-10 projects_readmore" data-animation="one" data-modal="project_{{$project->id}}"> Read More </a>
                                                             <a href="{{url('add-case/'.$project->id)}}" class="btn btn-primary mt-10"> Add Case </a>
                                                         </div>

@@ -613,7 +613,7 @@
                                         <div class="panel-collapse collapse" id="{{'accordion_'.$project->id}}">
                                             <div class="panel-content pb-50">
                                                 <h6>{{$project->name_full}}</h6>
-                                                <p>{{$project->short_desc}}</p>
+                                                <p>{!! $project->short_desc !!}}</p>
                                                 <a href="javascript:void(0)" class="btn btn-lg btn-dark btn-theme-colored float-right projects_readmore" data-animation="one" data-modal="project_{{$project->id}}"> Read More </a>
                                             </div>
                                         </div>
