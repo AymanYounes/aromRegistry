@@ -38,10 +38,10 @@
                 <div class="widget dark pt-120 pb-30 maxwidth400 sm-text-center">
                     <h5 class="widget-title">Useful Links</h5>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="register.html">Sign up</a></li>
-                        <li><a href="Faq.html">FAQ</a></li>
+                        <li><a href="{{url('/')}}">Home</a></li>
+                        <li><a href="{{url('/login')}}">Login</a></li>
+                        <li><a href="{{url('/register')}}">Sign up</a></li>
+                        <!--<li><a href="{{url('/faq')}}">FAQ</a></li>-->
                     </ul>
                 </div>
             </div>
@@ -90,7 +90,8 @@
                 <div class="widget dark text-right sm-text-center pt-120 pb-140 pt-xs-40 pb-xs-0 maxwidth400">
                     <h5 class="widget-title">Quick Contact</h5>
                     <ul>
-                        <li><a href="tel:0123456789">+(012) 345 6789</a></li>
+                        <li><a href="tel:+201200021223">+(20)120 002 1223</a></li>
+                        <li><a href="tel:+201115181806">+(20)111 518 1806</a></li>
                         <li><a href="mail:support@aromegyregistry.com">support@aromegyregistry.com</a></li>
                     </ul>
                     <ul class="social-icons icon-gray icon-circled icon-sm pull-right sm-pull-none sm-text-center mt-sm-15">

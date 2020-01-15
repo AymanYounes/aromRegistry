@@ -575,7 +575,12 @@ add_case - steps wizard
 }
 
 
-
+@media only screen and (min-width: 1024px) {
+    .margin-left-large-30 .active {
+        margin-left:50%;
+        }
+    
+}
 
 @media only screen and (max-width: 700px) {
 
@@ -1563,3 +1568,16 @@ label.toggle input[type="checkbox"]:checked + span::after {
     }
   }
   
+  
+  
+  
+  
+  .image-box-details .title{
+      font-size: 13px;
+  }
+  
+  
+  .image-box-details{
+      margin-bottom: 15px;
+  }
+  }

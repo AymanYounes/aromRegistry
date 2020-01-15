@@ -633,7 +633,7 @@
                                         <div class="panel-collapse collapse" id="{{'accordion'.$project->id}}">
                                             <div class="panel-content pb-50">
                                                 <h6>{{$project->name_full}}</h6>
-                                                <p>{{$project->short_desc}}</p>
+                                                <p>{!!$project->short_desc!!}</p>
                                                 <a href="javascript:void(0)" class="btn btn-lg btn-dark btn-theme-colored float-right projects_readmore" data-animation="one" data-modal="project_{{$project->id}}"> Read More </a>
                                             </div>
                                         </div>
@@ -891,9 +891,9 @@
                 <div class="section-content">
                     <div class="row multi-row-clearfix">
 
-                        <div class="owl-carousel-2col">
-                            <div class="item"><img src="images/amgen.png" alt="Amgen"  > </div>
-                            <div class="item"><img src="images/novartis.png" alt="Novartis" > </div>
+                        <div class="owl-carousel-2col margin-left-large-30" style="">
+                            <!--<div class="item"><img src="images/amgen.png" alt="Amgen"  > </div>-->
+                            <div class="item" ><img src="images/novartis.png" alt="Novartis" > </div>
                             {{--<div class="item"><img src="images/pfizer.png" alt="Pfizer" > </div>--}}
                         </div>
 
