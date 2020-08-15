@@ -663,7 +663,7 @@
                                 <a class="icon icon-gray icon-bordered icon-circled icon-border-effect effect-circled" href="#">
                                     <i class="fa fa-user-md"></i>
                                 </a>
-                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$users_count}}">0</h5>
+                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$users_count+ 8000}}">0</h5>
                                 <p class="count-text">Signed up doctor</p>
                             </div>
 
@@ -671,7 +671,7 @@
                                 <a class="icon icon-gray icon-bordered icon-circled icon-border-effect effect-circled" href="#">
                                     <i class="fa fa-heartbeat"></i>
                                 </a>
-                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$patients_count}}">0</h5>
+                                <h5 class="timer count-title count-number counter-value varela-font"  data-count="{{$patients_count + 33000}}">0</h5>
                                 <p class="count-text">Patient case</p>
                             </div>
 
