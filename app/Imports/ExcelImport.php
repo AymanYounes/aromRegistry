@@ -125,6 +125,7 @@ class ExcelImport implements ToArray, WithChunkReading
                     $case->project_id = $this->project_id;
                     $case->patient_id = $patient->id;
                     $case->visit = $visit_date;
+                    $case->source = 1;
                     $case->save();
 
                     for($i = 0; $i < array_key_last($this->project_4_array); $i++){
