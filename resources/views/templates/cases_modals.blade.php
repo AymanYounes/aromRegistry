@@ -204,7 +204,6 @@
                                     <tbody>
                                     @php $counter = 0 @endphp
                                     @foreach($section->question as $question)
-
                                         @if(isset($question->question_answer($view_case->id,$question->id)->answer))
                                             @php $q_answer = $question->question_answer($view_case->id,$question->id)->answer @endphp
 

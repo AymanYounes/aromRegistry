@@ -38,7 +38,7 @@ class CasesController extends Controller
     {
         $cases = Cases::where('user_id', Auth::user()->id )->get();
 
-        return view('cases' ,compact('cases','case_answers'));
+        return view('cases' ,compact('cases'));
     }
 
     public function getDeleteCase($id)

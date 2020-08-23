@@ -44,8 +44,10 @@ class UsersController extends Controller
     {
 
         $cases = Cases::find($id);
+        $case_answers = Case_answer::where('case_id',$id)->get();
         $modaldata['view'] = view('templates.cases_modals')
             ->with('view_case', $cases)
+            ->with('case_answers', $case_answers)
             ->render();
 
         echo json_encode($modaldata);

@@ -54,6 +54,13 @@ Route::get('/projects', ['uses' => 'ProjectsController@index', 'as' => 'projects
     Route::get('/update-case/{case_id}', ['uses' => 'CasesController@getUpdateProjectCase', 'as' => 'casesUpdateProjectCase']);
 
 
+/******************************************  import excel Routes  ******************************************/
+
+
+    Route::get('/import_excel','ImportExcelController@index');
+    Route::post('/import_excel/import','ImportExcelController@import');
+
+
 
 
 /******************************************  Admin Routes  ******************************************/
